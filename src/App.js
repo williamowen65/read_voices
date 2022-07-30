@@ -25,7 +25,7 @@ const analytics = getAnalytics(app);
 
 export default function App() {
   return (
-    <AppStyled>App</AppStyled>
+    <AppStyled>Apppp</AppStyled>
   )
 }
 
