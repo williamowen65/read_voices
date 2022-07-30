@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "build": "webpack",
+    "test": "jest",
     "build-dark": "webpack --env dark=true",
     "dev": "webpack-dev-server",
     "deploy": "npm run build && firebase deploy",
