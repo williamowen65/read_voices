@@ -25,10 +25,10 @@ node {
     currentBuild.result = "FAILURE";
 
     // send slack notification
-    slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    slackSend (channel:"read-voices",color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
 
     // throw the error
     throw e;
   }
-    slackSend (color: '#FF0000', message: "SUCCESS 🎈: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
+    slackSend (channel: "read-voices", color: '#FF0000', message: "SUCCESS 🎈: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
 }
