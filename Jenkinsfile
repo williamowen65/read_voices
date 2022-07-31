@@ -30,4 +30,5 @@ node {
     // throw the error
     throw e;
   }
+    slackSend (color: '#FF0000', message: "SUCCESS 🎈: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
 }
