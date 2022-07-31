@@ -25,13 +25,18 @@ const analytics = getAnalytics(app);
 
 export default function App() {
   return (
-    <AppStyled>Apppp
-      <p>dlskjsdlkjsdddssddl</p>
+    <AppStyled>
+      <h1>Nathan's read-voices app</h1>
 
     </AppStyled>
   )
 }
 
 const AppStyled = styled.div`
-  color: black
+  color: black;
+  h1 {
+    display: block;
+    width: fit-content;
+    margin: auto;
+  }
 `
