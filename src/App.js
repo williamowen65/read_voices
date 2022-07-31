@@ -32,7 +32,7 @@ export default function App() {
   )
 }
 
-const AppStyled = styled.div`
+const AppStyled = styled.header`
   color: black;
   h1 {
     display: block;
