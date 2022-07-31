@@ -30,5 +30,5 @@ node {
     // throw the error
     throw e;
   }
-    slackSend (channel: "#read-voices", color: '#FF0000', message: "SUCCESS 🎈: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ("islandhopper152/read_voices:${commit_id}")")
+    slackSend (channel: "#read-voices", color: '#FF0000', message: "SUCCESS 🎈: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ('islandhopper152/read_voices:${commit_id}')")
 }
