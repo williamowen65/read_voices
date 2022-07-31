@@ -6,9 +6,10 @@ pipelineJob('read-voices') {
                     remote {
                         github('williamowen65/read_voices')
                     }
+                    branch('*/main')
                 }
             }
-            scriptPath('./Jenkinsfile')
+            scriptPath('Jenkinsfile')
         }
     }
     triggers {
