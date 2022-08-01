@@ -18,7 +18,9 @@ node {
      docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
        def app = docker.build("islandhopper152/read_voices:${commit_id}", '.').push()
      }
-   }
+    //  sh 'docker tag <image> registry.heroku.com/<app>/<process-type>'
+    //  sh 'docker push registry.heroku.com/<app>/<process-type>'
+   } 
 
   } catch(e){
         // mark build as failed
