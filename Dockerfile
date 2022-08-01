@@ -10,8 +10,6 @@ RUN npm install
 
 RUN npm install -g heroku
 
-RUN npm install -g docker
-
 COPY . .
 
 EXPOSE 3000

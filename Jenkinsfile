@@ -22,6 +22,10 @@ node {
     //  sh 'docker push registry.heroku.com/<app>/<process-type>'
    } 
 
+   stage("deploy to heroku") {
+    sh "echo 'deploying to heroku not set up yet'"
+   }
+
   } catch(e){
         // mark build as failed
     currentBuild.result = "FAILURE";
