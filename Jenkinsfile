@@ -23,8 +23,10 @@ node {
    } 
 
    stage("deploy to heroku") {
-    sh "curl https://cli-assets.heroku.com/install-ubuntu.sh | sh"
-    sh "heroku container:login"
+      nodejs(nodeJSInstallationName: 'nodejs') {
+       sh 'npm install -g heroku'
+       sh "heroku login -i |testperson |testpassword"
+     }
    }
 
 
