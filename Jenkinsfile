@@ -23,6 +23,7 @@ node {
    } 
 
    stage("deploy to heroku") {
+    sh "curl https://cli-assets.heroku.com/install-ubuntu.sh | sh"
     sh "heroku container:login"
    }
 
