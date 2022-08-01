@@ -23,7 +23,7 @@ node {
    } 
 
    stage("deploy to heroku") {
-    sh "echo 'heroku container:login'"
+    sh "heroku container:login"
    }
 
   } catch(e){
