@@ -23,7 +23,7 @@ node {
    } 
 
 
-   stage("deploy to heroku") {
+   stage("deploy to port 8081") {
       sh 'docker stop read-voices'
       sh "docker run -p 8081:8080 --name read-voices --rm -d islandhopper152/read_voices:${commit_id}"
    }
