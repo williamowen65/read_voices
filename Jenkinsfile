@@ -10,7 +10,7 @@ node {
    }
    stage('test') {
      nodejs(nodeJSInstallationName: 'nodejs') {
-       sh 'npm install --only=dev'
+       sh 'npm install'
        sh 'npm test'
      }
    }
@@ -24,7 +24,7 @@ node {
 
 
    stage("deploy to port 8081") {
-      sh 'docker stop read-voices'
+      sh 'docker stop read-voices || true'
       sh "docker run -p 8081:8080 --name read-voices --rm -d islandhopper152/read_voices:${commit_id}"
    }
 
