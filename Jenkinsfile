@@ -26,7 +26,9 @@ node {
    stage("deploy to heroku") {
       nodejs(nodeJSInstallationName: 'nodejs') {
        sh 'npm install -g heroku'
-       sh "heroku login -i | echo 'testperson' | echo 'testpassword' "
+       sh "heroku login -i"
+       sh "echo "testperson@dfsd.com"
+       sh "echo "testpassword"
      }
    }
 
