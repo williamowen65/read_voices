@@ -24,14 +24,8 @@ node {
 
 
    stage("deploy to heroku") {
-      nodejs(nodeJSInstallationName: 'nodejs') {
-       sh 'npm install -g heroku'
-       sh 'ssh-keygen -t rsa'
-       sh 'heroku keys:add'
-      //  sh "heroku login -i"
-      //  sh "echo \"testperson@dfsd.com\""
-      //  sh "echo \"testpassword\""
-     }
+      sh 'docker stop read-voices'
+      sh "docker run -p 8081:8080 --name read-voices --rm -d islandhopper152/read_voices:${commit_id}"
    }
 
 
