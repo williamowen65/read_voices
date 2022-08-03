@@ -27,7 +27,7 @@ export default function App() {
   return (
     <AppStyled>
       <h1>Nathan's read-voices app</h1>
-      <p>testtttt YES??? no yes! no 😑</p>
+      <p>testtttt YES??? no yes! no 😑 yes!</p>
 
     </AppStyled>
   )
