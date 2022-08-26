@@ -4,11 +4,14 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm install
+RUN npm install -g npm@8.18.0
+
+RUN npm install --legacy-peer-deps
 
 COPY . .
 
-EXPOSE 3000
+RUN npm run build
 
-CMD ["npm", "run", "dev"]
+EXPOSE 8080
 
+CMD [ "npm", "start" ]
