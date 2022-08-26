@@ -11,6 +11,7 @@ export default function Container(props) {
     const ContainerStyled = styled.div`
         max-width: ${maxWidth}px;
         margin: 0 auto;
+        padding: 0 22px;
     `;
     return (
         <ContainerStyled

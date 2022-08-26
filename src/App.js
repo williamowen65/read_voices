@@ -43,12 +43,14 @@ export default function App() {
                 className={"outerContainer"}
             >
                 <Header />
-                <Container
-                    maxWidth={800}
-                    className={"mainContainer"}
-                >
-                    <AppRoutes />
-                </Container>
+            </Container>
+            <Container
+                maxWidth={1400}
+                className={"mainContainer"}
+            >
+                <AppRoutes />
+            </Container>
+            <Container maxWidth={900}>
                 <Footer />
             </Container>
         </AppStyled>
