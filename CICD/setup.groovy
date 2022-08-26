@@ -1,4 +1,4 @@
-pipelineJob('read-voices') {
+pipelineJob('portfolio') {
     definition {
         cpsScm {
             scm {
@@ -9,10 +9,11 @@ pipelineJob('read-voices') {
                     branch('*/main')
                 }
             }
-            scriptPath('Jenkinsfile')
+            scriptPath('CICD/Jenkinsfile')
         }
     }
     triggers {
         githubPush()
     }
+
 }
