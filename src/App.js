@@ -71,7 +71,10 @@ export default function App() {
                 <hr />
 
                 <AppRoutes />
-                <Container maxWidth={900}>
+                <Container
+                    maxWidth={900}
+                    className='footerContainer'
+                >
                     <Footer />
                 </Container>
             </div>
@@ -84,5 +87,14 @@ const AppStyled = styled.header`
     display: flex;
     #website {
         flex-grow: 1;
+        /* position: relative; */
+        hr {
+            position: absolute;
+            width: 100%;
+        }
+        .footerContainer {
+            position: absolute;
+            bottom: 0;
+        }
     }
 `;

@@ -95,6 +95,7 @@ export default function Dashboard() {
             </div>
             {/* <DashboardStyled className='dashboardContainer'> */}
             <Button
+                className='dashboard'
                 onClick={handleClick}
                 id='edit'
             >
