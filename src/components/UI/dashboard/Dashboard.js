@@ -8,6 +8,7 @@ import { setIsEditing } from "../../../context/appReducer";
 import gsap from "gsap";
 import Status from "./util/statusEnum";
 
+const width = 300;
 export default function Dashboard() {
     const { stories } = useSelector(
         (state) => state.stories
@@ -21,9 +22,29 @@ export default function Dashboard() {
         dispatch(setIsEditing());
         const el =
             document.querySelector("#dashboard");
-        gsap.to(el, {
-            width: isEditing ? 300 : 0,
+        const btn =
+            document.querySelector("#edit");
+
+        const tl = gsap.timeline({
+            defaults: { duration: 1 },
         });
+
+        tl.to(
+            "#dashboard",
+            {
+                width: isEditing ? 300 : 0,
+                ease: "none",
+            },
+            "="
+        );
+        // .to(
+        //     btn,
+        //     {
+        //         left: isEditing ? width : 0,
+        //         ease: "none",
+        //     },
+        //     "="
+        // );
 
         document
             .querySelector("#website")
@@ -33,38 +54,12 @@ export default function Dashboard() {
             );
     };
 
-    const Dot = ({ story }) => {
-        const status = story.meta.status;
-        let DotStyled;
-        console.log(status, Status[status]);
-        switch (Status[status]) {
-            case "public":
-                DotStyled = styled.div`
-                    background: blue;
-                `;
-                break;
-            case "private":
-                DotStyled = styled.div`
-                    background: green;
-                `;
-                break;
-            case "draft":
-                DotStyled = styled.div`
-                    background: red;
-                `;
-                break;
-            default:
-                break;
-        }
-
-        return (
-            <DotStyled className='dot'></DotStyled>
-        );
-    };
-
     return (
-        <div>
-            <DashboardStyled id='dashboard'>
+        <MetaDashboardStyled>
+            <div
+                id='dashboard'
+                className='dashboardContainer'
+            >
                 <h3>Dashboard</h3>
                 <ul>
                     {stories.map((el, i) => (
@@ -77,12 +72,58 @@ export default function Dashboard() {
                         </li>
                     ))}
                 </ul>
-            </DashboardStyled>
-            <Button onClick={handleClick}>
+            </div>
+            {/* <DashboardStyled className='dashboardContainer'> */}
+            <Button
+                onClick={handleClick}
+                id='edit'
+            >
                 {isEditing ? "Done" : "Edit"}
             </Button>
-        </div>
+            {/* </DashboardStyled> */}
+        </MetaDashboardStyled>
     );
 }
 
-const DashboardStyled = styled.div``;
+const MetaDashboardStyled = styled.div`
+    white-space: nowrap;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    #dashboard {
+        width: ${width}px;
+        position: relative;
+    }
+    button {
+        /* left: ${width}px; */
+    }
+`;
+
+const Dot = ({ story }) => {
+    const status = story.meta.status;
+    let DotStyled;
+    console.log(status, Status[status]);
+    switch (Status[status]) {
+        case "public":
+            DotStyled = styled.div`
+                background: blue;
+            `;
+            break;
+        case "private":
+            DotStyled = styled.div`
+                background: green;
+            `;
+            break;
+        case "draft":
+            DotStyled = styled.div`
+                background: red;
+            `;
+            break;
+        default:
+            break;
+    }
+
+    return (
+        <DotStyled className='dot'></DotStyled>
+    );
+};

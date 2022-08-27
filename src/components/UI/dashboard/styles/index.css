@@ -1,8 +1,11 @@
 #dashboard {
-  width: 300px;
   transition: all 0.5s;
-  position: relative;
   overflow: hidden;
+}
+#dashboard ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
 }
 #dashboard .dot {
   width: 20px;
@@ -12,6 +15,8 @@
 
 button {
   position: absolute;
+  right: -50px;
+  z-index: 10;
 }
 
 /*# sourceMappingURL=index.css.map */
