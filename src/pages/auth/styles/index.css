@@ -1,0 +1,11 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin: 0 auto;
+}
+form input {
+  margin: 10px 0;
+}
+
+/*# sourceMappingURL=index.css.map */

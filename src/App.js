@@ -11,6 +11,7 @@ import Story from "./pages/story/Story";
 import Header from "./layout/header/Header";
 import Footer from "./layout/footer/Footer";
 import Container from "./layout/Container";
+import Auth from "./pages/auth/Auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -38,9 +39,10 @@ const AppRoutes = () => (
             element={<Home />}
         />
         <Route
-            path='/story/:id'
+            path='/story/:title'
             element={<Story />}
         />
+        <Route path='/auth' element={<Auth />} />
     </Routes>
 );
 
@@ -53,12 +55,9 @@ export default function App() {
             >
                 <Header />
             </Container>
-            <Container
-                maxWidth={1400}
-                className={"mainContainer"}
-            >
-                <AppRoutes />
-            </Container>
+            <hr />
+
+            <AppRoutes />
             <Container maxWidth={900}>
                 <Footer />
             </Container>
