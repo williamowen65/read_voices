@@ -7,6 +7,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
+import Story from "./pages/story/Story";
 import Header from "./layout/header/Header";
 import Footer from "./layout/footer/Footer";
 import Container from "./layout/Container";
@@ -31,7 +32,15 @@ const analytics = getAnalytics(app);
 
 const AppRoutes = () => (
     <Routes>
-        <Route path='/' element={<Home />} />
+        <Route
+            path='/'
+            exact
+            element={<Home />}
+        />
+        <Route
+            path='/story/:id'
+            element={<Story />}
+        />
     </Routes>
 );
 
