@@ -50,10 +50,16 @@ export default function Home() {
 
 const HomeStyled = styled.div`
     ul {
+        hr {
+            padding: 0;
+            margin: 0;
+        }
         padding: 0;
+        margin: 0;
         li {
             display: flex;
             align-items: center;
+            margin: 20px 0;
         }
     }
 `;
