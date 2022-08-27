@@ -159,6 +159,7 @@ export default function Story() {
             </StoryStyled>
         );
     }
+
     return (
         <p>What you seek is not on this page</p>
     );
