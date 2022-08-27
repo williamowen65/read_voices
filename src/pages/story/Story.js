@@ -8,35 +8,23 @@ import Container from "../../layout/Container";
 
 export default function Story() {
     const navigate = useNavigate();
-    const { stories } = useSelector(
-        (state) => state.stories
-    );
+    const { slug } = useParams();
+    const story = useSelector(
+        (state) => state.stories.stories
+    ).filter((el) => el.meta.slug === slug)[0];
+
     const { loggedIn } = useSelector(
         (state) => state.app
     );
-    const { slug } = useParams();
 
-    const [thisStory, setThisStory] =
-        useState(null);
-
-    useEffect(() => {
-        if (stories) {
-            const story = stories.filter(
-                (el) => el.meta.slug === slug
-            );
-            if (story) {
-                setThisStory(story[0]);
-            }
-        }
-    }, [stories, slug]);
-
-    if (thisStory) {
+    if (story) {
+        console.log(story);
         if (
             (!loggedIn &&
-                thisStory.meta.status ===
+                story.meta.status ===
                     "private") ||
             (!loggedIn &&
-                thisStory.meta.status === "draft")
+                story.meta.status === "draft")
         ) {
             return (
                 <p>
@@ -52,7 +40,7 @@ export default function Story() {
                     maxWidth={1400}
                     className={"mainContainer"}
                 >
-                    <h2>{thisStory.title}</h2>
+                    <h2>{story.title}</h2>
                     <p>
                         Lorem ipsum dolor sit,
                         amet consectetur
