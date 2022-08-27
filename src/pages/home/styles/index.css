@@ -1,0 +1,13 @@
+#home li .item {
+  flex-grow: 1;
+  display: flex;
+}
+#home li .item header {
+  display: flex;
+  flex-direction: column;
+}
+#home li .item .description {
+  padding: 8px 35px;
+}
+
+/*# sourceMappingURL=index.css.map */

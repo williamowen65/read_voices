@@ -1,0 +1,17 @@
+#home {
+    li {
+        .item {
+            flex-grow: 1;
+            display: flex;
+            header {
+                display: flex;
+                flex-direction: column;
+                // align-items: center;
+                // justify-content: space-between;
+            }
+            .description {
+                padding: 8px 35px;
+            }
+        }
+    }
+}

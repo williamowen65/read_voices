@@ -16,7 +16,7 @@ export default function Home() {
     console.log(stories);
 
     return (
-        <HomeStyled>
+        <HomeStyled id='home'>
             <ul>
                 {stories
                     .filter(
@@ -45,16 +45,23 @@ export default function Home() {
                                         }
                                     >
                                         <div className='item'>
-                                            <h2>
-                                                {
-                                                    el.title
-                                                }
-                                            </h2>
-                                            <p>
-                                                {
-                                                    el.description
-                                                }
-                                            </p>
+                                            <header>
+                                                <h2>
+                                                    {
+                                                        el.title
+                                                    }
+                                                </h2>
+                                                <p>
+                                                    {el.meta.datePublished.toDateString()}
+                                                </p>
+                                            </header>
+                                            <div className='description'>
+                                                <p>
+                                                    {
+                                                        el.description
+                                                    }
+                                                </p>
+                                            </div>
                                         </div>
                                     </li>
                                 </EditContainer>
