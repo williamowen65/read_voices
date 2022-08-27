@@ -45,7 +45,7 @@ const AppRoutes = () => (
             element={<Home />}
         />
         <Route
-            path='/story/:title'
+            path='/story/:slug'
             element={<Story />}
         />
         <Route path='/auth' element={<Auth />} />

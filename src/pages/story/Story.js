@@ -8,7 +8,7 @@ export default function Story() {
     const { stories } = useSelector(
         (state) => state.stories
     );
-    const { title } = useParams();
+    const { slug } = useParams();
 
     const [thisStory, setThisStory] =
         useState(null);
@@ -16,21 +16,19 @@ export default function Story() {
     useEffect(() => {
         if (stories) {
             const story = stories.filter(
-                (el) => el.title === title
+                (el) => el.meta.slug === slug
             );
-            console.log(story);
-            // if (story) {
-            //     setThisStory(story);
-            // } else {
-            //     alert("nope");
-            // }
+            if (story) {
+                setThisStory(story[0]);
+            }
         }
-    }, [stories]);
+    }, [stories, slug]);
 
     if (thisStory) {
+        console.log(thisStory);
         return (
             <StoryStyled>
-                {thisStory.title}
+                <h2>{thisStory.title}</h2>
             </StoryStyled>
         );
     }
