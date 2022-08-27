@@ -4,6 +4,7 @@ import "./styles/index.css";
 import "../styles/index.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Button from "../../components/UI/form/Button";
 
 export default function Header() {
     const loggedIn = useSelector((state) => {
@@ -15,7 +16,7 @@ export default function Header() {
 
     const navigate = useNavigate();
     return (
-        <HeaderStyled>
+        <HeaderStyled id='header'>
             <div>
                 <h1
                     className='logo'

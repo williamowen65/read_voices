@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Container from "../../layout/Container";
 import "./styles/index.css";
+import EditContainer from "../../layout/EditContainer";
 
 export default function Home() {
     const { stories } = useSelector(
@@ -22,16 +23,22 @@ export default function Home() {
                                 "mainContainer"
                             }
                         >
-                            <li>
-                                <h2>
-                                    {el.title}
-                                </h2>
-                                <p>
-                                    {
-                                        el.description
-                                    }
-                                </p>
-                            </li>
+                            <EditContainer>
+                                <li>
+                                    <div className='item'>
+                                        <h2>
+                                            {
+                                                el.title
+                                            }
+                                        </h2>
+                                        <p>
+                                            {
+                                                el.description
+                                            }
+                                        </p>
+                                    </div>
+                                </li>
+                            </EditContainer>
                         </Container>
                         <hr></hr>
                     </span>
@@ -44,5 +51,9 @@ export default function Home() {
 const HomeStyled = styled.div`
     ul {
         padding: 0;
+        li {
+            display: flex;
+            align-items: center;
+        }
     }
 `;

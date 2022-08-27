@@ -12,6 +12,8 @@ import Header from "./layout/header/Header";
 import Footer from "./layout/footer/Footer";
 import Container from "./layout/Container";
 import Auth from "./pages/auth/Auth";
+import Dashboard from "./components/UI/dashboard/Dashboard";
+import { useSelector } from "react-redux";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -47,24 +49,34 @@ const AppRoutes = () => (
 );
 
 export default function App() {
+    const loggedIn = useSelector(
+        (state) => state.app.loggedIn
+    );
     return (
         <AppStyled>
-            <Container
-                maxWidth={900}
-                className={"outerContainer"}
-            >
-                <Header />
-            </Container>
-            <hr />
+            {loggedIn && <Dashboard />}
+            <div id='website'>
+                <Container
+                    maxWidth={900}
+                    className={"outerContainer"}
+                >
+                    <Header />
+                </Container>
+                <hr />
 
-            <AppRoutes />
-            <Container maxWidth={900}>
-                <Footer />
-            </Container>
+                <AppRoutes />
+                <Container maxWidth={900}>
+                    <Footer />
+                </Container>
+            </div>
         </AppStyled>
     );
 }
 
 const AppStyled = styled.header`
     color: black;
+    display: flex;
+    #website {
+        flex-grow: 1;
+    }
 `;
