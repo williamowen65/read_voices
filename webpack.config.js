@@ -6,8 +6,9 @@ module.exports = (arg) => {
         mode: "development",
         entry: path.resolve("./src/index.js"),
         output: {
-            path: path.resolve(__dirname, "dist"),
-            filename: "[name].js",
+            // path: path.resolve(__dirname, "dist"),
+            // filename: "[name].js",
+            publicPath: "/",
             clean: true,
         },
         module: {
