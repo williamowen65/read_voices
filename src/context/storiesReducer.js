@@ -7,12 +7,26 @@ const storiesSlice = createSlice({
             {
                 title: "some title",
                 description: "dfsdfsdf",
-                datePublished: new Date(),
+                meta: {
+                    datePublished: new Date(),
+                    status: "public",
+                },
             },
             {
                 title: "some other title",
                 description: "dfsdfsdf",
-                datePublished: new Date(),
+                meta: {
+                    datePublished: new Date(),
+                    status: "public",
+                },
+            },
+            {
+                title: "Sunny Days",
+                description: "dfsdfsdf",
+                meta: {
+                    datePublished: null,
+                    status: "private",
+                },
             },
         ],
     },

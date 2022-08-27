@@ -3,6 +3,11 @@
     transition: all 0.5s;
     position: relative;
     overflow: hidden;
+    .dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
 }
 button {
     position: absolute;
