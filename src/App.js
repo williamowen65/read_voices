@@ -13,7 +13,11 @@ import Footer from "./layout/footer/Footer";
 import Container from "./layout/Container";
 import Auth from "./pages/auth/Auth";
 import Dashboard from "./components/UI/dashboard/Dashboard";
-import { useSelector } from "react-redux";
+import {
+    useSelector,
+    useDispatch,
+} from "react-redux";
+import { setSlugs } from "./context/storiesReducer";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -52,6 +56,8 @@ export default function App() {
     const loggedIn = useSelector(
         (state) => state.app.loggedIn
     );
+    const dispatch = useDispatch();
+    dispatch(setSlugs());
     return (
         <AppStyled>
             {loggedIn && <Dashboard />}

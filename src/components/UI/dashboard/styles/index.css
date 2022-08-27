@@ -18,13 +18,20 @@
   box-shadow: 0px 0px 6px black;
   transform: translateY(-5px);
 }
-#dashboard ul li .dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+#dashboard ul li .statusContainer {
   position: absolute;
   right: 3px;
   top: 3px;
+  display: flex;
+  align-items: center;
+}
+#dashboard ul li .statusContainer p {
+  padding: 0 5px;
+}
+#dashboard ul li .statusContainer .dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 }
 
 button {

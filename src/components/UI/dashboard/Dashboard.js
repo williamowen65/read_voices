@@ -6,10 +6,12 @@ import "./styles/index.css";
 import { useDispatch } from "react-redux";
 import { setIsEditing } from "../../../context/appReducer";
 import gsap from "gsap";
+import { useNavigate } from "react-router-dom";
 import Status from "./util/statusEnum";
 
 const width = 300;
 export default function Dashboard() {
+    const navigate = useNavigate();
     const { stories } = useSelector(
         (state) => state.stories
     );
@@ -63,9 +65,27 @@ export default function Dashboard() {
                 <h3>Dashboard</h3>
                 <ul>
                     {stories.map((el, i) => (
-                        <li key={i}>
+                        <li
+                            key={i}
+                            data-slug={
+                                el.meta.slug
+                            }
+                            onClick={() =>
+                                navigate(
+                                    `/story/${el.meta.slug}`
+                                )
+                            }
+                        >
                             <h4>{el.title}</h4>
-                            <Dot story={el} />
+                            <div className='statusContainer'>
+                                <p>
+                                    {
+                                        el.meta
+                                            .status
+                                    }
+                                </p>
+                                <Dot story={el} />
+                            </div>
                             {/* <p>
                                 {el.meta.datePublished.toString()}
                             </p> */}
@@ -124,6 +144,8 @@ const Dot = ({ story }) => {
     }
 
     return (
-        <DotStyled className='dot'></DotStyled>
+        <>
+            <DotStyled className='dot'></DotStyled>
+        </>
     );
 };
