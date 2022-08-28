@@ -47,7 +47,11 @@ export default function Home() {
                                                     }
                                                 </h2>
                                                 <p>
-                                                    {el.meta.datePublished.toDateString()}
+                                                    {
+                                                        el
+                                                            .meta
+                                                            .datePublished
+                                                    }
                                                 </p>
                                                 <div className='imageContainer'>
                                                     <img

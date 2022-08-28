@@ -65,6 +65,10 @@ export default function Dashboard() {
         }
     };
 
+    const handleStatusClick = (e, el) => {
+        dispatch(toggleStatus(el.meta.slug));
+    };
+
     return (
         <>
             <MetaDashboardStyled>
@@ -114,13 +118,12 @@ export default function Dashboard() {
                                 />
                                 <div
                                     className='statusContainer'
-                                    onClick={() =>
-                                        dispatch(
-                                            toggleStatus(
-                                                el
-                                                    .meta
-                                                    .slug
-                                            )
+                                    onClick={(
+                                        e
+                                    ) =>
+                                        handleStatusClick(
+                                            e,
+                                            el
                                         )
                                     }
                                 >

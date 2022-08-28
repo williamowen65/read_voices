@@ -9,7 +9,8 @@ const storiesSlice = createSlice({
                 title: "some title",
                 description: "dfsdfsdf",
                 meta: {
-                    datePublished: new Date(),
+                    datePublished:
+                        new Date().toDateString(),
                     status: "public",
                     html: "",
                 },
@@ -18,7 +19,8 @@ const storiesSlice = createSlice({
                 title: "some other title",
                 description: "dfsdfsdf",
                 meta: {
-                    datePublished: new Date(),
+                    datePublished:
+                        new Date().toDateString(),
                     status: "public",
                 },
             },
@@ -52,20 +54,34 @@ const storiesSlice = createSlice({
             });
         },
         toggleStatus: (state, action) => {
-            console.log(state.stories);
+            // alert(action.payload);
+            // state.stories = 2;
             state.stories = state.stories.map(
-                (story) => {
-                    console.log(action.payload);
+                (el) => {
                     if (
-                        story.meta.slug ===
+                        el.meta.slug ===
                         action.payload
                     ) {
-                        story.meta.status ===
-                        "private"
-                            ? "public"
-                            : "private";
+                        console.log(
+                            el.meta.slug,
+                            el.meta.status,
+                            action.payload
+                        );
+                        console.log(
+                            el.meta.status ===
+                                "private"
+                        );
+                        el.meta.status =
+                            el.meta.status ===
+                            "private"
+                                ? "public"
+                                : "private";
+                        console.log(
+                            "new",
+                            el.meta.status
+                        );
                     }
-                    return story;
+                    return el;
                 }
             );
         },
