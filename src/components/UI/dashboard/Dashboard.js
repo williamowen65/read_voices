@@ -72,13 +72,17 @@ export default function Dashboard() {
                     id='dashboard'
                     className='dashboardContainer'
                 >
-                    <h3>Dashboard</h3>
-                    <TbPlus
-                        size={30}
-                        onClick={() => {
-                            navigate("/create");
-                        }}
-                    />
+                    <header>
+                        <h3>Dashboard</h3>
+                        <TbPlus
+                            size={30}
+                            onClick={() => {
+                                navigate(
+                                    "/create"
+                                );
+                            }}
+                        />
+                    </header>
                     <ul>
                         {stories.map((el, i) => (
                             <li

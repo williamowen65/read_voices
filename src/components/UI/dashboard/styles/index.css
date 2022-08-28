@@ -1,6 +1,21 @@
 #dashboard {
   transition: all 0.5s;
-  overflow: hidden;
+  overflow-x: hidden;
+}
+#dashboard header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+#dashboard header svg {
+  border-radius: 50%;
+  transform: translateX(-2px);
+}
+#dashboard header svg:hover {
+  transition: all 0.5s;
+  background-color: transparent;
+  box-shadow: 0px 0px 23px blue;
+  cursor: pointer;
 }
 #dashboard ul {
   padding: 0;

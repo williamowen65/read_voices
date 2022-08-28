@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "./styles/index.css";
-import "../styles/index.css";
+// import "../styles/index.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Button from "../../components/UI/form/Button";
