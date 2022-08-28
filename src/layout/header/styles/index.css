@@ -5,5 +5,8 @@ header.mainHeader {
 #header {
   text-align: center;
 }
+#header h1 {
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=index.css.map */

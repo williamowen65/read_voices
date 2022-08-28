@@ -135,7 +135,11 @@ export default function Story() {
                         minima quisquam alias.
                     </p>
                 </Container>
-                <Button>Publish</Button>
+                {loggedIn &&
+                    story.meta.status ==
+                        "draft" && (
+                        <Button>Publish</Button>
+                    )}
             </div>
         );
     }

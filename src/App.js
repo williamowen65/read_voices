@@ -98,8 +98,7 @@ const AppStyled = styled.div`
             width: 100%;
         }
         .footerContainer {
-            position: absolute;
-            bottom: 0;
+            margin-top: auto;
         }
     }
 `;

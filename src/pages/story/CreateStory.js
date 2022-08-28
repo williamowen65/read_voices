@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import Button from "../../components/UI/form/Button";
 import Input from "../../components/UI/form/Input";
 import Container from "../../layout/Container";
 import PageNotFound from "../404";
@@ -28,6 +29,8 @@ export default function CreateStory(props) {
                     type='text'
                 />
                 <div className='summernote'></div>
+                <Button>Publish</Button>
+                <Button>Save as Draft</Button>
             </Container>
         </div>
     );

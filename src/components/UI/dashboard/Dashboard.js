@@ -171,9 +171,12 @@ export default function Dashboard() {
                         dispatch(
                             setLoggedIn(false)
                         );
-                        dispatch(
-                            setIsEditing(false)
-                        );
+                        isEditing &&
+                            dispatch(
+                                setIsEditing(
+                                    false
+                                )
+                            );
                     }}
                 />
             )}
