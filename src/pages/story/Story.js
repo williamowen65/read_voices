@@ -9,6 +9,7 @@ import { setIsEditing } from "../../context/appReducer";
 import Container from "../../layout/Container";
 import { useRef } from "react";
 import "./styles/index.css";
+import Button from "../../components/UI/form/Button";
 
 export default function Story() {
     const navigate = useNavigate();
@@ -134,6 +135,7 @@ export default function Story() {
                         minima quisquam alias.
                     </p>
                 </Container>
+                <Button>Publish</Button>
             </div>
         );
     }

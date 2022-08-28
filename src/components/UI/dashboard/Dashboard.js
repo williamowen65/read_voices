@@ -66,6 +66,7 @@ export default function Dashboard() {
     };
 
     const handleStatusClick = (e, el) => {
+        e.stopPropagation();
         dispatch(toggleStatus(el.meta.slug));
     };
 

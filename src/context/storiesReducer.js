@@ -62,24 +62,16 @@ const storiesSlice = createSlice({
                         el.meta.slug ===
                         action.payload
                     ) {
-                        console.log(
-                            el.meta.slug,
-                            el.meta.status,
-                            action.payload
-                        );
-                        console.log(
-                            el.meta.status ===
+                        if (
+                            el.meta.status !=
+                            "draft"
+                        ) {
+                            el.meta.status =
+                                el.meta.status ===
                                 "private"
-                        );
-                        el.meta.status =
-                            el.meta.status ===
-                            "private"
-                                ? "public"
-                                : "private";
-                        console.log(
-                            "new",
-                            el.meta.status
-                        );
+                                    ? "public"
+                                    : "private";
+                        }
                     }
                     return el;
                 }
