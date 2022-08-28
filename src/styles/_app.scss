@@ -1,11 +1,14 @@
-h1 {
-    display: block;
-    width: fit-content;
-    margin: auto;
-}
-.outerContainer {
-    padding: 0 0px;
-}
-.mainContainer {
-    padding: 0 10px;
+#app {
+    padding: 20px 0;
+    h1 {
+        display: block;
+        width: fit-content;
+        margin: auto;
+    }
+    .outerContainer {
+        padding: 0 0px;
+    }
+    .mainContainer {
+        padding: 0 10px;
+    }
 }

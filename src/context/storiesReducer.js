@@ -50,6 +50,24 @@ const storiesSlice = createSlice({
                 );
             });
         },
+        toggleStatus: (state, action) => {
+            console.log(state.stories);
+            state.stories = state.stories.map(
+                (story) => {
+                    console.log(action.payload);
+                    if (
+                        story.meta.slug ===
+                        action.payload
+                    ) {
+                        story.meta.status ===
+                        "private"
+                            ? "public"
+                            : "private";
+                    }
+                    return story;
+                }
+            );
+        },
     },
 });
 // alert("hi");
@@ -58,4 +76,6 @@ export const setStories =
     storiesSlice.actions.setStories;
 export const setSlugs =
     storiesSlice.actions.setSlugs;
+export const toggleStatus =
+    storiesSlice.actions.toggleStatus;
 export default storiesSlice.reducer;

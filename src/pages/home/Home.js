@@ -5,6 +5,7 @@ import Container from "../../layout/Container";
 import "./styles/index.css";
 import EditContainer from "../../layout/EditContainer";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/UI/form/Button";
 
 export default function Home() {
     const { stories } = useSelector(
@@ -37,13 +38,7 @@ export default function Home() {
                                 }
                             >
                                 <EditContainer>
-                                    <li
-                                        onClick={() =>
-                                            navigate(
-                                                `/story/${el.meta.slug}`
-                                            )
-                                        }
-                                    >
+                                    <li>
                                         <div className='item'>
                                             <header>
                                                 <h2>
@@ -54,13 +49,31 @@ export default function Home() {
                                                 <p>
                                                     {el.meta.datePublished.toDateString()}
                                                 </p>
+                                                <div className='imageContainer'>
+                                                    <img
+                                                        src='https://flxt.tmsimg.com/assets/p19989_p_v10_aa.jpg'
+                                                        alt=''
+                                                        width='100px'
+                                                    />
+                                                </div>
                                             </header>
-                                            <div className='description'>
-                                                <p>
-                                                    {
-                                                        el.description
+                                            <div className='stageRight'>
+                                                <div className='description'>
+                                                    <p>
+                                                        {
+                                                            el.description
+                                                        }
+                                                    </p>
+                                                </div>
+                                                <Button
+                                                    onClick={() =>
+                                                        navigate(
+                                                            `/story/${el.meta.slug}`
+                                                        )
                                                     }
-                                                </p>
+                                                >
+                                                    READ
+                                                </Button>
                                             </div>
                                         </div>
                                     </li>

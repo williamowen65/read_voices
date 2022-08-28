@@ -1,14 +1,15 @@
-h1 {
+#app {
+  padding: 20px 0;
+}
+#app h1 {
   display: block;
   width: fit-content;
   margin: auto;
 }
-
-.outerContainer {
+#app .outerContainer {
   padding: 0 0px;
 }
-
-.mainContainer {
+#app .mainContainer {
   padding: 0 10px;
 }
 

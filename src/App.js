@@ -82,7 +82,7 @@ export default function App() {
     );
 }
 
-const AppStyled = styled.header`
+const AppStyled = styled.div`
     color: black;
     display: flex;
     #website {

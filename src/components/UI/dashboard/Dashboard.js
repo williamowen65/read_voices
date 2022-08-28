@@ -6,11 +6,18 @@ import "./styles/index.css";
 import { useDispatch } from "react-redux";
 import { setIsEditing } from "../../../context/appReducer";
 import gsap from "gsap";
-import { useNavigate } from "react-router-dom";
+import {
+    useNavigate,
+    useLocation,
+} from "react-router-dom";
 import Status from "./util/statusEnum";
+import { toggleStatus } from "../../../context/storiesReducer";
+
+import { BsFileImage } from "react-icons/bs";
 
 const width = 300;
 export default function Dashboard() {
+    const location = useLocation();
     const navigate = useNavigate();
     const { stories } = useSelector(
         (state) => state.stories
@@ -77,7 +84,25 @@ export default function Dashboard() {
                             }
                         >
                             <h4>{el.title}</h4>
-                            <div className='statusContainer'>
+                            <BsFileImage
+                                size={30}
+                                style={{
+                                    display:
+                                        "inline",
+                                }}
+                            />
+                            <div
+                                className='statusContainer'
+                                onClick={() =>
+                                    dispatch(
+                                        toggleStatus(
+                                            el
+                                                .meta
+                                                .slug
+                                        )
+                                    )
+                                }
+                            >
                                 <p>
                                     {
                                         el.meta
@@ -94,13 +119,18 @@ export default function Dashboard() {
                 </ul>
             </div>
             {/* <DashboardStyled className='dashboardContainer'> */}
-            <Button
-                className='dashboard'
-                onClick={handleClick}
-                id='edit'
-            >
-                {isEditing ? "Done" : "Edit"}
-            </Button>
+            {location.pathname.includes(
+                "/story/"
+            ) && (
+                <Button
+                    className='dashboard'
+                    onClick={handleClick}
+                    id='edit'
+                >
+                    {isEditing ? "Done" : "Edit"}
+                </Button>
+            )}
+            {console.log(location.pathname)}
             {/* </DashboardStyled> */}
         </MetaDashboardStyled>
     );
