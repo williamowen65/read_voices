@@ -26,41 +26,38 @@ export default function Dashboard() {
         (state) => state.app.isEditing
     );
     const dispatch = useDispatch();
+    const animate = false;
 
     const handleClick = () => {
         dispatch(setIsEditing());
-        const el =
-            document.querySelector("#dashboard");
-        const btn =
-            document.querySelector("#edit");
+        if (animate) {
+            const el =
+                document.querySelector(
+                    "#dashboard"
+                );
+            const btn =
+                document.querySelector("#edit");
 
-        const tl = gsap.timeline({
-            defaults: { duration: 1 },
-        });
+            const tl = gsap.timeline({
+                defaults: { duration: 1 },
+            });
 
-        tl.to(
-            "#dashboard",
-            {
-                width: isEditing ? 300 : 0,
-                ease: "none",
-            },
-            "="
-        );
-        // .to(
-        //     btn,
-        //     {
-        //         left: isEditing ? width : 0,
-        //         ease: "none",
-        //     },
-        //     "="
-        // );
-
-        document
-            .querySelector("#website")
-            .setAttribute(
-                "contentEditable",
-                isEditing ? "false" : "true"
+            tl.to(
+                "#dashboard",
+                {
+                    width: isEditing ? 300 : 0,
+                    ease: "none",
+                },
+                "="
+            ).to(
+                btn,
+                {
+                    left: isEditing ? width : 0,
+                    ease: "none",
+                },
+                "="
             );
+        }
     };
 
     return (
@@ -77,11 +74,17 @@ export default function Dashboard() {
                             data-slug={
                                 el.meta.slug
                             }
-                            onClick={() =>
+                            onClick={() => {
                                 navigate(
                                     `/story/${el.meta.slug}`
-                                )
-                            }
+                                );
+                                if (isEditing)
+                                    dispatch(
+                                        setIsEditing(
+                                            false
+                                        )
+                                    );
+                            }}
                         >
                             <h4>{el.title}</h4>
                             <BsFileImage
@@ -130,7 +133,7 @@ export default function Dashboard() {
                     {isEditing ? "Done" : "Edit"}
                 </Button>
             )}
-            {console.log(location.pathname)}
+            {/* {console.log(location.pathname)} */}
             {/* </DashboardStyled> */}
         </MetaDashboardStyled>
     );
@@ -153,7 +156,7 @@ const MetaDashboardStyled = styled.div`
 const Dot = ({ story }) => {
     const status = story.meta.status;
     let DotStyled;
-    console.log(status, Status[status]);
+    // console.log(status, Status[status]);
     switch (Status[status]) {
         case "public":
             DotStyled = styled.div`

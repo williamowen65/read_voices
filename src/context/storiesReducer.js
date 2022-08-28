@@ -11,6 +11,7 @@ const storiesSlice = createSlice({
                 meta: {
                     datePublished: new Date(),
                     status: "public",
+                    html: "",
                 },
             },
             {

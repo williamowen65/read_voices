@@ -12,7 +12,12 @@ const appSlice = createSlice({
             state.loggedIn = action.payload;
         },
         setIsEditing: (state, action) => {
-            state.isEditing = !state.isEditing;
+            if (action.payload) {
+                state.isEditing = action.payload;
+            } else {
+                state.isEditing =
+                    !state.isEditing;
+            }
         },
     },
 });
