@@ -48,4 +48,11 @@ button.dashboard {
   z-index: 10;
 }
 
+.logout {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=index.css.map */

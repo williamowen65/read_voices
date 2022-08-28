@@ -4,7 +4,10 @@ import styled from "styled-components";
 import Button from "../form/Button";
 import "./styles/index.css";
 import { useDispatch } from "react-redux";
-import { setIsEditing } from "../../../context/appReducer";
+import {
+    setIsEditing,
+    setLoggedIn,
+} from "../../../context/appReducer";
 import gsap from "gsap";
 import {
     useNavigate,
@@ -14,6 +17,7 @@ import Status from "./util/statusEnum";
 import { toggleStatus } from "../../../context/storiesReducer";
 
 import { BsFileImage } from "react-icons/bs";
+import { IoIosLogOut } from "react-icons/io";
 
 const width = 300;
 export default function Dashboard() {
@@ -22,8 +26,8 @@ export default function Dashboard() {
     const { stories } = useSelector(
         (state) => state.stories
     );
-    const isEditing = useSelector(
-        (state) => state.app.isEditing
+    const { isEditing, loggedIn } = useSelector(
+        (state) => state.app
     );
     const dispatch = useDispatch();
     const animate = false;
@@ -61,81 +65,101 @@ export default function Dashboard() {
     };
 
     return (
-        <MetaDashboardStyled>
-            <div
-                id='dashboard'
-                className='dashboardContainer'
-            >
-                <h3>Dashboard</h3>
-                <ul>
-                    {stories.map((el, i) => (
-                        <li
-                            key={i}
-                            data-slug={
-                                el.meta.slug
-                            }
-                            onClick={() => {
-                                navigate(
-                                    `/story/${el.meta.slug}`
-                                );
-                                if (isEditing)
-                                    dispatch(
-                                        setIsEditing(
-                                            false
-                                        )
+        <>
+            <MetaDashboardStyled>
+                <div
+                    id='dashboard'
+                    className='dashboardContainer'
+                >
+                    <h3>Dashboard</h3>
+                    <ul>
+                        {stories.map((el, i) => (
+                            <li
+                                key={i}
+                                data-slug={
+                                    el.meta.slug
+                                }
+                                onClick={() => {
+                                    navigate(
+                                        `/story/${el.meta.slug}`
                                     );
-                            }}
-                        >
-                            <h4>{el.title}</h4>
-                            <BsFileImage
-                                size={30}
-                                style={{
-                                    display:
-                                        "inline",
+                                    if (isEditing)
+                                        dispatch(
+                                            setIsEditing(
+                                                false
+                                            )
+                                        );
                                 }}
-                            />
-                            <div
-                                className='statusContainer'
-                                onClick={() =>
-                                    dispatch(
-                                        toggleStatus(
+                            >
+                                <h4>
+                                    {el.title}
+                                </h4>
+                                <BsFileImage
+                                    size={30}
+                                    style={{
+                                        display:
+                                            "inline",
+                                    }}
+                                />
+                                <div
+                                    className='statusContainer'
+                                    onClick={() =>
+                                        dispatch(
+                                            toggleStatus(
+                                                el
+                                                    .meta
+                                                    .slug
+                                            )
+                                        )
+                                    }
+                                >
+                                    <p>
+                                        {
                                             el
                                                 .meta
-                                                .slug
-                                        )
-                                    )
-                                }
-                            >
-                                <p>
-                                    {
-                                        el.meta
-                                            .status
-                                    }
-                                </p>
-                                <Dot story={el} />
-                            </div>
-                            {/* <p>
+                                                .status
+                                        }
+                                    </p>
+                                    <Dot
+                                        story={el}
+                                    />
+                                </div>
+                                {/* <p>
                                 {el.meta.datePublished.toString()}
                             </p> */}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            {/* <DashboardStyled className='dashboardContainer'> */}
-            {location.pathname.includes(
-                "/story/"
-            ) && (
-                <Button
-                    className='dashboard'
-                    onClick={handleClick}
-                    id='edit'
-                >
-                    {isEditing ? "Done" : "Edit"}
-                </Button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                {/* <DashboardStyled className='dashboardContainer'> */}
+                {location.pathname.includes(
+                    "/story/"
+                ) && (
+                    <Button
+                        className='dashboard'
+                        onClick={handleClick}
+                        id='edit'
+                    >
+                        {isEditing
+                            ? "Done"
+                            : "Edit"}
+                    </Button>
+                )}
+                {/* {console.log(location.pathname)} */}
+                {/* </DashboardStyled> */}
+            </MetaDashboardStyled>
+            {loggedIn && (
+                <IoIosLogOut
+                    size={30}
+                    className='logout'
+                    onClick={() => {
+                        dispatch(
+                            setLoggedIn(false)
+                        );
+                    }}
+                />
             )}
-            {/* {console.log(location.pathname)} */}
-            {/* </DashboardStyled> */}
-        </MetaDashboardStyled>
+        </>
     );
 }
 
