@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { setIsEditing } from "../../context/appReducer";
 import Container from "../../layout/Container";
 import { useRef } from "react";
+import "./styles/index.css";
 
 export default function Story() {
     const navigate = useNavigate();
@@ -89,7 +90,7 @@ export default function Story() {
         ]);
 
         return (
-            <StoryStyled>
+            <div className='storyStyle'>
                 <Container
                     maxWidth={1400}
                     className={"mainContainer"}
@@ -133,7 +134,7 @@ export default function Story() {
                         minima quisquam alias.
                     </p>
                 </Container>
-            </StoryStyled>
+            </div>
         );
     }
 
@@ -143,5 +144,5 @@ export default function Story() {
 }
 
 const StoryStyled = styled.div`
-    margin: 20px 0;
+    /* margin: 20px 0; */
 `;

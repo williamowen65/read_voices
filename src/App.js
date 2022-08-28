@@ -18,6 +18,7 @@ import {
     useDispatch,
 } from "react-redux";
 import { setSlugs } from "./context/storiesReducer";
+import CreateStory from "./pages/story/CreateStory";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -47,6 +48,10 @@ const AppRoutes = () => (
         <Route
             path='/story/:slug'
             element={<Story />}
+        />
+        <Route
+            path='/create'
+            element={<CreateStory />}
         />
         <Route path='/auth' element={<Auth />} />
     </Routes>

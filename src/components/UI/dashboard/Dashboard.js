@@ -16,6 +16,7 @@ import {
 import Status from "./util/statusEnum";
 import { toggleStatus } from "../../../context/storiesReducer";
 
+import { TbPlus } from "react-icons/tb";
 import { BsFileImage } from "react-icons/bs";
 import { IoIosLogOut } from "react-icons/io";
 
@@ -72,6 +73,12 @@ export default function Dashboard() {
                     className='dashboardContainer'
                 >
                     <h3>Dashboard</h3>
+                    <TbPlus
+                        size={30}
+                        onClick={() => {
+                            navigate("/create");
+                        }}
+                    />
                     <ul>
                         {stories.map((el, i) => (
                             <li
@@ -155,6 +162,9 @@ export default function Dashboard() {
                     onClick={() => {
                         dispatch(
                             setLoggedIn(false)
+                        );
+                        dispatch(
+                            setIsEditing(false)
                         );
                     }}
                 />
