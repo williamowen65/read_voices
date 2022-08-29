@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Button from "../form/Button";
@@ -12,6 +12,7 @@ import gsap from "gsap";
 import {
     useNavigate,
     useLocation,
+    useParams,
 } from "react-router-dom";
 import Status from "./util/statusEnum";
 import { toggleStatus } from "../../../context/storiesReducer";
@@ -65,13 +66,36 @@ export default function Dashboard() {
         }
     };
 
+    const activeSlug = useSelector(
+        (state) => state.stories.activeSlug
+    );
+    // const story =
+
     const handleStatusClick = (e, el) => {
         e.stopPropagation();
         dispatch(toggleStatus(el.meta.slug));
     };
 
+    const handleImgClick = (e, slug) => {
+        const input = document.querySelector(
+            "input[type=file]"
+        );
+        input.click();
+    };
+
+    const handleFileUpload = (e) => {
+        alert(e.target.value);
+    };
+
     return (
         <>
+            <input
+                type='file'
+                style={{
+                    display: "none",
+                }}
+                onChange={handleFileUpload}
+            />
             <MetaDashboardStyled>
                 <div
                     id='dashboard'
@@ -116,7 +140,18 @@ export default function Dashboard() {
                                         display:
                                             "inline",
                                     }}
+                                    onClick={(
+                                        e
+                                    ) =>
+                                        handleImgClick(
+                                            e,
+                                            el
+                                                .meta
+                                                .slug
+                                        )
+                                    }
                                 />
+
                                 <div
                                     className='statusContainer'
                                     onClick={(
@@ -150,16 +185,29 @@ export default function Dashboard() {
                 {location.pathname.includes(
                     "/story/"
                 ) && (
-                    <Button
-                        className='dashboard'
-                        onClick={handleClick}
-                        id='edit'
-                    >
-                        {isEditing
-                            ? "Done"
-                            : "Edit"}
-                    </Button>
+                    <>
+                        <Button
+                            className='dashboard'
+                            onClick={handleClick}
+                            id='edit'
+                        >
+                            {isEditing
+                                ? "Done"
+                                : "Edit"}
+                        </Button>
+                        {loggedIn && (
+                            <Button className='dashboard publish'>
+                                Publish
+                            </Button>
+                        )}
+                        {/* {console.log(story)} */}
+                    </>
                 )}
+
+                {/* {loggedIn &&
+                    story?.meta?.status ==
+                        "draft" && ( */}
+                {/* )} */}
                 {/* {console.log(location.pathname)} */}
                 {/* </DashboardStyled> */}
             </MetaDashboardStyled>

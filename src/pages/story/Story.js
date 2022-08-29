@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setIsEditing } from "../../context/appReducer";
+import { setActiveSlug } from "../../context/storiesReducer";
 import Container from "../../layout/Container";
 import { useRef } from "react";
 import "./styles/index.css";
@@ -15,6 +16,7 @@ export default function Story() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { slug } = useParams();
+    dispatch(setActiveSlug(slug));
     const story = useSelector(
         (state) => state.stories.stories
     ).filter((el) => el.meta.slug === slug)[0];
@@ -135,11 +137,6 @@ export default function Story() {
                         minima quisquam alias.
                     </p>
                 </Container>
-                {loggedIn &&
-                    story.meta.status ==
-                        "draft" && (
-                        <Button>Publish</Button>
-                    )}
             </div>
         );
     }

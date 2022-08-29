@@ -62,6 +62,9 @@ button.dashboard {
   right: -50px;
   z-index: 10;
 }
+button.dashboard.publish {
+  right: -121px;
+}
 
 .logout {
   position: absolute;

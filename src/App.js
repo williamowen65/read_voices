@@ -5,7 +5,11 @@ import "./styles/index.css";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { Route, Routes } from "react-router-dom";
+import {
+    Route,
+    Routes,
+    useParams,
+} from "react-router-dom";
 import Home from "./pages/home/Home";
 import Story from "./pages/story/Story";
 import Header from "./layout/header/Header";
@@ -19,6 +23,8 @@ import {
 } from "react-redux";
 import { setSlugs } from "./context/storiesReducer";
 import CreateStory from "./pages/story/CreateStory";
+import About from "./pages/About";
+import Donate from "./pages/Donate";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -54,6 +60,14 @@ const AppRoutes = () => (
             element={<CreateStory />}
         />
         <Route path='/auth' element={<Auth />} />
+        <Route
+            path='/about'
+            element={<About />}
+        />
+        <Route
+            path='/donate'
+            element={<Donate />}
+        />
     </Routes>
 );
 
@@ -61,6 +75,7 @@ export default function App() {
     const loggedIn = useSelector(
         (state) => state.app.loggedIn
     );
+
     const dispatch = useDispatch();
     dispatch(setSlugs());
     return (

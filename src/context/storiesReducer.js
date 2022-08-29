@@ -4,6 +4,7 @@ import { slugify } from "../components/UI/dashboard/util/slugify";
 const storiesSlice = createSlice({
     name: "stories",
     initialState: {
+        activeSlug: null,
         stories: [
             {
                 title: "some title",
@@ -77,6 +78,9 @@ const storiesSlice = createSlice({
                 }
             );
         },
+        setActiveSlug: (state, action) => {
+            state.activeSlug = action.payload;
+        },
     },
 });
 // alert("hi");
@@ -87,4 +91,6 @@ export const setSlugs =
     storiesSlice.actions.setSlugs;
 export const toggleStatus =
     storiesSlice.actions.toggleStatus;
+export const setActiveSlug =
+    storiesSlice.actions.setActiveSlug;
 export default storiesSlice.reducer;
