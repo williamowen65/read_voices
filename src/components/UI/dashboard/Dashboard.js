@@ -25,7 +25,7 @@ const width = 300;
 export default function Dashboard() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { stories } = useSelector(
+    const { stories, activeSlug } = useSelector(
         (state) => state.stories
     );
     const { isEditing, loggedIn } = useSelector(
@@ -33,6 +33,12 @@ export default function Dashboard() {
     );
     const dispatch = useDispatch();
     const animate = false;
+
+    const story = useSelector(
+        (state) => state.stories.stories
+    ).filter(
+        (el) => el.meta.slug === activeSlug
+    )[0];
 
     const handleClick = () => {
         dispatch(setIsEditing());
@@ -66,9 +72,6 @@ export default function Dashboard() {
         }
     };
 
-    const activeSlug = useSelector(
-        (state) => state.stories.activeSlug
-    );
     // const story =
 
     const handleStatusClick = (e, el) => {
@@ -195,7 +198,8 @@ export default function Dashboard() {
                                 ? "Done"
                                 : "Edit"}
                         </Button>
-                        {loggedIn && (
+                        {story.meta.status ==
+                            "draft" && (
                             <Button className='dashboard publish'>
                                 Publish
                             </Button>
