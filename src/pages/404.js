@@ -9,4 +9,6 @@ export default function PageNotFound() {
     );
 }
 
-const PageNotFoundStyled = styled.div``;
+const PageNotFoundStyled = styled.div`
+    margin: 20px 0;
+`;

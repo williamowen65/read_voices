@@ -26,7 +26,11 @@ export default function Story() {
     );
 
     if (story) {
-        // console.log(story);
+        console.log(
+            story,
+            loggedIn,
+            story.meta.status
+        );
         if (
             (!loggedIn &&
                 story.meta.status ===

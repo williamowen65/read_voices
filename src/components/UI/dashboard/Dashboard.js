@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Button from "../form/Button";
 import "./styles/index.css";
 import { useDispatch } from "react-redux";
+import { Upload } from "upload-js";
+
 import {
     setIsEditing,
     setLoggedIn,
@@ -20,6 +22,7 @@ import { toggleStatus } from "../../../context/storiesReducer";
 import { TbPlus } from "react-icons/tb";
 import { BsFileImage } from "react-icons/bs";
 import { IoIosLogOut } from "react-icons/io";
+import FileUploadButton from "../../UX/FileUploadButton";
 
 const width = 300;
 export default function Dashboard() {
@@ -86,19 +89,14 @@ export default function Dashboard() {
         input.click();
     };
 
+    const upload = new Upload({ apiKey: "free" });
     const handleFileUpload = (e) => {
         alert(e.target.value);
     };
 
     return (
         <>
-            <input
-                type='file'
-                style={{
-                    display: "none",
-                }}
-                onChange={handleFileUpload}
-            />
+            <FileUploadButton />
             <MetaDashboardStyled>
                 <div
                     id='dashboard'
@@ -198,7 +196,7 @@ export default function Dashboard() {
                                 ? "Done"
                                 : "Edit"}
                         </Button>
-                        {story.meta.status ==
+                        {story?.meta.status ==
                             "draft" && (
                             <Button className='dashboard publish'>
                                 Publish
@@ -229,6 +227,7 @@ export default function Dashboard() {
                                     false
                                 )
                             );
+                        navigate("/");
                     }}
                 />
             )}
