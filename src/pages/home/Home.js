@@ -67,18 +67,11 @@ export default function Home() {
                                                     el.description
                                                 }
                                             </p>
-                                            <div className='stageRight'>
-                                                <div className='description'></div>
-                                                <Button
-                                                    onClick={() =>
-                                                        navigate(
-                                                            `/story/${el.meta.slug}`
-                                                        )
-                                                    }
-                                                >
-                                                    READ
-                                                </Button>
-                                            </div>
+                                        </div>
+                                        <div className='buttons'>
+                                            <Button>
+                                                dfd
+                                            </Button>
                                         </div>
                                     </li>
                                 </EditContainer>
