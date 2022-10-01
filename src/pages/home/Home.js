@@ -40,35 +40,35 @@ export default function Home() {
                                 <EditContainer>
                                     <li>
                                         <div className='item'>
-                                            <header>
-                                                <h2>
-                                                    {
-                                                        el.title
-                                                    }
-                                                </h2>
-                                                <p>
-                                                    {
-                                                        el
-                                                            .meta
-                                                            .datePublished
-                                                    }
-                                                </p>
-                                                <div className='imageContainer'>
-                                                    <img
-                                                        src='https://flxt.tmsimg.com/assets/p19989_p_v10_aa.jpg'
-                                                        alt=''
-                                                        width='100px'
-                                                    />
-                                                </div>
-                                            </header>
-                                            <div className='stageRight'>
-                                                <div className='description'>
+                                            <p>
+                                                <header>
+                                                    <h2>
+                                                        {
+                                                            el.title
+                                                        }
+                                                    </h2>
                                                     <p>
                                                         {
-                                                            el.description
+                                                            el
+                                                                .meta
+                                                                .datePublished
                                                         }
                                                     </p>
-                                                </div>
+                                                    <div className='imageContainer'>
+                                                        <img
+                                                            src='https://flxt.tmsimg.com/assets/p19989_p_v10_aa.jpg'
+                                                            alt=''
+                                                            width='100px'
+                                                        />
+                                                    </div>
+                                                </header>
+
+                                                {
+                                                    el.description
+                                                }
+                                            </p>
+                                            <div className='stageRight'>
+                                                <div className='description'></div>
                                                 <Button
                                                     onClick={() =>
                                                         navigate(
@@ -83,7 +83,6 @@ export default function Home() {
                                     </li>
                                 </EditContainer>
                             </Container>
-                            <hr></hr>
                         </span>
                     ))}
             </ul>

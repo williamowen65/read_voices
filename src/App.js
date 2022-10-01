@@ -52,10 +52,7 @@ const AppRoutes = () => (
             exact
             element={<Home />}
         />
-        <Route
-            path='/story/:slug'
-            element={<Story />}
-        />
+
         <Route
             path='/create'
             element={<CreateStory />}
@@ -93,7 +90,6 @@ export default function App() {
                 >
                     <Header />
                 </Container>
-                <hr />
 
                 <AppRoutes />
                 <Container

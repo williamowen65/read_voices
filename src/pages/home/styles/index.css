@@ -1,12 +1,26 @@
 #home li .item {
   flex-grow: 1;
   display: flex;
+  border-top: 2px solid black;
+  padding-top: 10px;
 }
 #home li .item header {
   display: flex;
   flex-direction: column;
   min-width: 180px;
-  max-width: 180px;
+  height: fit-content;
+  background-color: blue;
+  box-shadow: -5px -5px purple;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  float: left;
+}
+#home li .item header .imageContainer {
+  min-width: 180px;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  translate: -10px 5px;
 }
 #home li .item .stageRight {
   display: flex;

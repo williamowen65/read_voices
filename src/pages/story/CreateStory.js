@@ -12,7 +12,7 @@ export default function CreateStory(props) {
         (state) => state.app
     );
     useEffect(() => {
-        $(".summernote").summernote();
+        // $(".summernote").summernote();
     }, []);
     if (!loggedIn) {
         return <PageNotFound />;
