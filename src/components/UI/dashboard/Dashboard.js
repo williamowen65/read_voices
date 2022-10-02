@@ -93,6 +93,10 @@ export default function Dashboard() {
                     title:
                         "toggled status of " +
                         el.title,
+                    type:
+                        el.meta.status == "public"
+                            ? "private"
+                            : "public",
                 })
             );
     };

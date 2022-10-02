@@ -34,7 +34,10 @@ export default function VerboseLogger({
 
     if (verboseLog.title) {
         return (
-            <VerboseLoggerStyled id='verboseLogger'>
+            <VerboseLoggerStyled
+                id='verboseLogger'
+                type={verboseLog.type}
+            >
                 <h3>{verboseLog.title}</h3>
                 <p>{verboseLog.description}</p>
                 <span>{verboseLog.type}</span>
@@ -45,4 +48,17 @@ export default function VerboseLogger({
     }
 }
 
-const VerboseLoggerStyled = styled.div``;
+const VerboseLoggerStyled = styled.div`
+    box-shadow: inset 0px 0px 40px
+        ${({ type }) => {
+            switch (type) {
+                case "public":
+                    return "blue";
+                case "private":
+                    return "green";
+
+                default:
+                    return "rgb(198, 180, 180)";
+            }
+        }};
+`;
