@@ -1,4 +1,7 @@
-import React, { useEffect } from "react";
+import React, {
+    useEffect,
+    useState,
+} from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Button from "../../components/UI/form/Button";
@@ -11,8 +14,14 @@ export default function CreateStory(props) {
     const { loggedIn } = useSelector(
         (state) => state.app
     );
+    const [isOffline, setIsOffline] =
+        useState(false);
     useEffect(() => {
-        // $(".summernote").summernote();
+        if (typeof $ == "function") {
+            $(".summernote").summernote();
+        } else {
+            setIsOffline(true);
+        }
     }, []);
     if (!loggedIn) {
         return <PageNotFound />;
@@ -28,7 +37,32 @@ export default function CreateStory(props) {
                     autoComplete='off'
                     type='text'
                 />
-                <div className='summernote'></div>
+                <textarea className='summernote'></textarea>
+                <div>
+                    <header>Add Links</header>
+                    <div className='links'>
+                        <div className='addLinkContainer'>
+                            <input
+                                type='text'
+                                name='text'
+                                id='text'
+                                placeholder='text'
+                            />
+                            <input
+                                type='text'
+                                name='link'
+                                id='link'
+                                placeholder='link'
+                            />
+                        </div>
+                        <div>
+                            <div className='add'>
+                                +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <Button>Publish</Button>
                 <Button>Save as Draft</Button>
             </Container>

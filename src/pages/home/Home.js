@@ -69,9 +69,35 @@ export default function Home() {
                                             </p>
                                         </div>
                                         <div className='buttons'>
-                                            <Button>
-                                                dfd
-                                            </Button>
+                                            {el
+                                                .meta
+                                                .buttons
+                                                .length ? (
+                                                el.meta.buttons.map(
+                                                    (
+                                                        el,
+                                                        i
+                                                    ) => (
+                                                        <Button>
+                                                            <a
+                                                                href={
+                                                                    el.link
+                                                                }
+                                                            >
+                                                                {
+                                                                    el.text
+                                                                }
+                                                            </a>
+                                                        </Button>
+                                                    )
+                                                )
+                                            ) : (
+                                                <Button>
+                                                    No
+                                                    Links
+                                                    shared
+                                                </Button>
+                                            )}
                                         </div>
                                     </li>
                                 </EditContainer>

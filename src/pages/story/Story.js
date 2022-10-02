@@ -54,40 +54,87 @@ export default function Story() {
 
         useEffect(() => {
             //     let target;
+
             if (document.querySelector("#app")) {
                 //         document.querySelector(
                 //             ".mainContainer"
                 //         ).innerHTML = htmlStory(story);
                 //     }
-                if (isEditing) {
-                    var markupStr = $(
-                        ".mainContainer"
-                    ).summernote("code");
-                    /**
-                     * CREATE FN to process html
-                     *  forward that data to mongoDB or firebase, and upon sucdess
-                     *  update title & update html in redux
-                     *
-                     *
-                     */
-                    $(
-                        ".mainContainer"
-                    ).summernote(
-                        "code",
-                        markupStr
-                    );
+                if (typeof $ == "function") {
+                    if (isEditing) {
+                        var markupStr = $(
+                            ".mainContainer"
+                        ).summernote("code");
+                        /**
+                         * CREATE FN to process html
+                         *  forward that data to mongoDB or firebase, and upon sucdess
+                         *  update title & update html in redux
+                         *
+                         *
+                         */
+                        $(
+                            ".mainContainer"
+                        ).summernote(
+                            "code",
+                            markupStr
+                        );
+                    } else {
+                        // var markupStr = $(
+                        //     ".mainContainer"
+                        // ).summernote("code");
+                        // console.log(markupStr);
+                        const htmlStr = $(
+                            ".note-editable"
+                        ).summernote("code");
+                        console.log(htmlStr);
+                        $(
+                            ".note-editor.note-frame"
+                        ).remove();
+                    }
                 } else {
-                    // var markupStr = $(
-                    //     ".mainContainer"
-                    // ).summernote("code");
-                    // console.log(markupStr);
-                    const htmlStr = $(
-                        ".note-editable"
-                    ).summernote("code");
-                    console.log(htmlStr);
-                    $(
-                        ".note-editor.note-frame"
-                    ).remove();
+                    if (isEditing) {
+                        const container =
+                            document.querySelector(
+                                ".mainContainer"
+                            );
+                        const textNode =
+                            container.querySelector(
+                                "p"
+                            );
+                        const text =
+                            textNode.innerText;
+                        textNode.remove();
+                        const textarea =
+                            document.createElement(
+                                "textarea"
+                            );
+                        textarea.innerText = text;
+
+                        container.insertAdjacentElement(
+                            "beforeend",
+                            textarea
+                        );
+
+                        const titleNode =
+                            container.querySelector(
+                                "h2"
+                            );
+                        const title =
+                            titleNode.innerText;
+                        titleNode.remove();
+
+                        const input =
+                            document.createElement(
+                                "input"
+                            );
+                        input.value = title;
+                        input.type = "text";
+
+                        container.insertAdjacentElement(
+                            "afterbegin",
+                            input
+                        );
+                    }
                 }
             }
         }, [
@@ -105,41 +152,7 @@ export default function Story() {
                     <h2 className='title'>
                         {story.title}
                     </h2>
-                    <p>
-                        Lorem ipsum dolor sit amet
-                        consectetur adipisicing
-                        elit. Quasi accusantium
-                        assumenda recusandae autem
-                        distinctio quod, alias
-                        nobis commodi impedit
-                        corrupti fugit voluptate
-                        officia sit quis odit
-                        laboriosam omnis minima.
-                        Unde dolore quod rem
-                        accusamus dignissimos est
-                        dolores. Tempora,
-                        similique vel id, fuga
-                        dolores labore autem ab
-                        corporis necessitatibus
-                        quae asperiores maxime
-                        reprehenderit laboriosam,
-                        expedita quisquam officiis
-                        ratione totam debitis.
-                        Quibusdam at doloremque
-                        optio, impedit tenetur
-                        expedita illo illum
-                        facilis fugit! Nesciunt
-                        porro corporis recusandae
-                        laborum praesentium,
-                        officia accusantium
-                        molestias impedit delectus
-                        odit assumenda nemo animi
-                        fugiat repellat aliquam
-                        exercitationem. Eius at
-                        illo molestiae quod
-                        cupiditate voluptate cum
-                        minima quisquam alias.
-                    </p>
+                    <p>{story.description}</p>
                 </Container>
             </div>
         );

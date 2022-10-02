@@ -44,6 +44,7 @@ export default function Dashboard() {
     )[0];
 
     const handleClick = () => {
+        dispatch();
         dispatch(setIsEditing());
         if (animate) {
             const el =

@@ -25,6 +25,7 @@ import { setSlugs } from "./context/storiesReducer";
 import CreateStory from "./pages/story/CreateStory";
 import About from "./pages/About";
 import Donate from "./pages/Donate";
+// import Story from "./pages/story/Story";
 import PageNotFound from "./pages/404";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -52,7 +53,10 @@ const AppRoutes = () => (
             exact
             element={<Home />}
         />
-
+        <Route
+            path='/story/:slug'
+            element={<Story />}
+        />
         <Route
             path='/create'
             element={<CreateStory />}

@@ -11,4 +11,6 @@ export default function Button(props) {
 
 const ButtonStyled = styled.button`
     cursor: pointer;
+    margin-right: 10px;
+    font-weight: bolder;
 `;

@@ -13,7 +13,16 @@ const storiesSlice = createSlice({
                     datePublished:
                         new Date().toDateString(),
                     status: "public",
-                    html: "",
+                    buttons: [
+                        {
+                            text: "Amazon",
+                            link: "https://amazon.com",
+                        },
+                        {
+                            text: "Medium",
+                            link: "https://medium.com",
+                        },
+                    ],
                 },
             },
             {
@@ -24,6 +33,7 @@ const storiesSlice = createSlice({
                     datePublished:
                         new Date().toDateString(),
                     status: "public",
+                    buttons: [],
                 },
             },
             {
@@ -32,6 +42,7 @@ const storiesSlice = createSlice({
                 meta: {
                     datePublished: null,
                     status: "private",
+                    buttons: [],
                 },
             },
             {
@@ -40,6 +51,7 @@ const storiesSlice = createSlice({
                 meta: {
                     datePublished: null,
                     status: "draft",
+                    buttons: [],
                 },
             },
         ],
