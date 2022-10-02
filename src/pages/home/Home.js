@@ -1,20 +1,28 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import {
+    useDispatch,
+    useSelector,
+} from "react-redux";
 import styled from "styled-components";
 import Container from "../../layout/Container";
 import "./styles/index.css";
 import EditContainer from "../../layout/EditContainer";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/UI/form/Button";
+import { setActiveSlug } from "../../context/storiesReducer";
 
 export default function Home() {
     const { stories } = useSelector(
         (state) => state.stories
     );
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
     console.log(stories);
+    useEffect(() => {
+        dispatch(setActiveSlug(""));
+    }, []);
 
     return (
         <HomeStyled id='home'>

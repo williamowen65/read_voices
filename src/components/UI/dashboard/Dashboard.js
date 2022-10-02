@@ -138,6 +138,12 @@ export default function Dashboard() {
                                             )
                                         );
                                 }}
+                                className={
+                                    activeSlug ===
+                                    el.meta.slug
+                                        ? "active"
+                                        : null
+                                }
                             >
                                 <h4>
                                     {el.title}
@@ -150,14 +156,21 @@ export default function Dashboard() {
                                     }}
                                     onClick={(
                                         e
-                                    ) =>
-                                        handleImgClick(
-                                            e,
+                                    ) => {
+                                        if (
+                                            activeSlug ===
                                             el
                                                 .meta
                                                 .slug
-                                        )
-                                    }
+                                        ) {
+                                            handleImgClick(
+                                                e,
+                                                el
+                                                    .meta
+                                                    .slug
+                                            );
+                                        }
+                                    }}
                                 />
 
                                 <div
