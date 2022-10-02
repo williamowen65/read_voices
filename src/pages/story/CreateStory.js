@@ -11,6 +11,7 @@ import styled from "styled-components";
 import { slugify } from "../../components/UI/dashboard/util/slugify";
 import Button from "../../components/UI/form/Button";
 import Input from "../../components/UI/form/Input";
+import { setVerboseLog } from "../../context/appReducer";
 import { setNewStoryAndStatus } from "../../context/storiesReducer";
 import Container from "../../layout/Container";
 import PageNotFound from "../404";
@@ -71,7 +72,7 @@ export default function CreateStory(props) {
     };
 
     return (
-        <div className='storyStyle'>
+        <div className='storyStyle create'>
             <Container
                 maxWidth={1400}
                 className={"mainContainer"}
@@ -180,8 +181,10 @@ export default function CreateStory(props) {
                             );
                             navigate("/");
                         } else {
-                            alert(
-                                "must have title, description, and at least one button"
+                            dispatch(
+                                setVerboseLog({
+                                    title: "must have title, description, and at least one button to publish",
+                                })
                             );
                         }
                     }}
@@ -216,8 +219,10 @@ export default function CreateStory(props) {
                             );
                             navigate("/");
                         } else {
-                            alert(
-                                "must have title to save as draft"
+                            dispatch(
+                                setVerboseLog({
+                                    title: "must have title to save as draft",
+                                })
                             );
                         }
                     }}

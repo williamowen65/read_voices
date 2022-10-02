@@ -144,15 +144,72 @@ export default function Story() {
         ]);
 
         return (
-            <div className='storyStyle'>
+            <div className='storyStyle display'>
                 <Container
                     maxWidth={1400}
                     className={"mainContainer"}
                 >
-                    <h2 className='title'>
-                        {story.title}
-                    </h2>
-                    <p>{story.description}</p>
+                    <div className='content'>
+                        <div className='item'>
+                            <p>
+                                <header>
+                                    <h2 className='title'>
+                                        {
+                                            story.title
+                                        }
+                                    </h2>
+                                    <p>
+                                        {
+                                            story
+                                                .meta
+                                                .datePublished
+                                        }
+                                    </p>
+                                    <div className='imageContainer'>
+                                        <img
+                                            src='https://flxt.tmsimg.com/assets/p19989_p_v10_aa.jpg'
+                                            alt=''
+                                            width='100px'
+                                        />
+                                    </div>
+                                </header>
+                                <p>
+                                    {
+                                        story.description
+                                    }
+                                </p>
+                            </p>
+                            <div className='buttons'>
+                                {story.meta
+                                    .buttons
+                                    .length ? (
+                                    story.meta.buttons.map(
+                                        (
+                                            el,
+                                            i
+                                        ) => (
+                                            <Button>
+                                                <a
+                                                    href={
+                                                        el.link
+                                                    }
+                                                >
+                                                    {
+                                                        el.text
+                                                    }
+                                                </a>
+                                            </Button>
+                                        )
+                                    )
+                                ) : (
+                                    <Button>
+                                        No Links
+                                        shared
+                                    </Button>
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </Container>
             </div>
         );
