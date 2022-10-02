@@ -16,6 +16,22 @@ export default function CreateStory(props) {
     );
     const [isOffline, setIsOffline] =
         useState(false);
+    const [title, setTitle] = useState();
+    const [description, setDescription] =
+        useState();
+    const [buttons, setButtons] = useState([]);
+
+    const [focus, setFocus] = useState();
+
+    useEffect(() => {
+        if (focus) {
+            const el = document.querySelector(
+                `#${focus.id}`
+            );
+            el.focus();
+        }
+    }, [focus]);
+
     useEffect(() => {
         if (typeof $ == "function") {
             $(".summernote").summernote();
@@ -36,8 +52,24 @@ export default function CreateStory(props) {
                     placeholder='Title'
                     autoComplete='off'
                     type='text'
+                    id='title'
+                    value={title}
+                    onChange={(e) => {
+                        setFocus(e.target);
+                        setTitle(e.target.value);
+                    }}
                 />
-                <textarea className='summernote'></textarea>
+                <textarea
+                    className='summernote'
+                    value={description}
+                    id='summernote'
+                    onChange={(e) => {
+                        setFocus(e.target);
+                        setDescription(
+                            e.target.value
+                        );
+                    }}
+                ></textarea>
                 <div>
                     <header>Add Links</header>
                     <div className='links'>
@@ -55,15 +87,44 @@ export default function CreateStory(props) {
                                 placeholder='link'
                             />
                         </div>
-                        <div>
+                        <div
+                            onClick={(e) => {
+                                const text =
+                                    document.querySelector(
+                                        "input#text"
+                                    );
+                                const link =
+                                    document.querySelector(
+                                        "input#link"
+                                    );
+                                setButtons([
+                                    ...buttons,
+                                    {
+                                        text,
+                                        link,
+                                    },
+                                ]);
+                            }}
+                        >
                             <div className='add'>
                                 +
                             </div>
                         </div>
+                        <div className='newButtons'></div>
                     </div>
                 </div>
 
-                <Button>Publish</Button>
+                <Button
+                    onClick={() => {
+                        alert(`
+                            ${buttons[0]}
+                            ${title}
+                            ${description}
+                        `);
+                    }}
+                >
+                    Publish
+                </Button>
                 <Button>Save as Draft</Button>
             </Container>
         </div>
