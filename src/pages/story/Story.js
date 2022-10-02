@@ -190,6 +190,7 @@ export default function Story() {
                                         ) => (
                                             <Button>
                                                 <a
+                                                    target='_blank'
                                                     href={
                                                         el.link
                                                     }

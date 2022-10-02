@@ -2,11 +2,20 @@
   border: 2px solid black;
   border-radius: 4px;
   background-color: white;
-  width: 300px;
+  width: fit-content;
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 10px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+#verboseLogger h3,
+#verboseLogger p {
+  display: inline;
+}
+#verboseLogger span {
+  margin-right: 10px;
 }
 
 /*# sourceMappingURL=index.css.map */

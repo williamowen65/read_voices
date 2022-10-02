@@ -3,9 +3,18 @@
     border-radius: 4px;
     background-color: white;
 
-    width: 300px;
+    width: fit-content;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    padding: 10px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    h3,
+    p {
+        display: inline;
+    }
+    span {
+        margin-right: 10px;
+    }
 }

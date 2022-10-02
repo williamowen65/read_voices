@@ -9,6 +9,9 @@ import "./styles/index.css";
 
 export default function VerboseLogger({
     log: verboseLog,
+    styles,
+    classN,
+    children,
 }) {
     const dispatch = useDispatch();
     const { verboseLog: allLogs } = useSelector(
@@ -32,15 +35,20 @@ export default function VerboseLogger({
         }
     }, []);
 
-    if (verboseLog.title) {
+    if (
+        verboseLog.title ||
+        verboseLog.description
+    ) {
         return (
             <VerboseLoggerStyled
+                style={styles}
                 id='verboseLogger'
+                className={classN}
                 type={verboseLog.type}
             >
                 <h3>{verboseLog.title}</h3>
+                <span>{children}</span>
                 <p>{verboseLog.description}</p>
-                <span>{verboseLog.type}</span>
             </VerboseLoggerStyled>
         );
     } else {

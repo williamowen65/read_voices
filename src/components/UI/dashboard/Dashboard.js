@@ -24,7 +24,9 @@ import { TbPlus } from "react-icons/tb";
 import { BsFileImage } from "react-icons/bs";
 import { IoIosLogOut } from "react-icons/io";
 import { BsFilter } from "react-icons/bs";
+import { FiAlertTriangle } from "react-icons/fi";
 import FileUploadButton from "../../UX/FileUploadButton";
+import VerboseLogger from "../../UX/verboseLogger/VerboseLogger";
 
 const width = 300;
 export default function Dashboard() {
@@ -117,6 +119,20 @@ export default function Dashboard() {
         <>
             <FileUploadButton />
             <MetaDashboardStyled>
+                {/* <div className='deployEdits'>
+                    Attention: You are viewing
+                    local edited content. Click
+                    here to deploy changes.
+                </div> */}
+                <VerboseLogger
+                    log={{
+                        description:
+                            "You are viewing local edited content. Click here to deploy changes.",
+                    }}
+                    classN='deployContainer'
+                >
+                    <FiAlertTriangle />
+                </VerboseLogger>
                 <div
                     id='dashboard'
                     className='dashboardContainer'
@@ -293,17 +309,17 @@ const Dot = ({ story }) => {
     switch (Status[status]) {
         case "public":
             DotStyled = styled.div`
-                background: blue;
+                background-color: blue;
             `;
             break;
         case "private":
             DotStyled = styled.div`
-                background: green;
+                background-color: green;
             `;
             break;
         case "draft":
             DotStyled = styled.div`
-                background: red;
+                background-color: red;
             `;
             break;
         default:

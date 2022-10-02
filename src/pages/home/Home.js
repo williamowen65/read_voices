@@ -88,6 +88,7 @@ export default function Home() {
                                                     ) => (
                                                         <Button>
                                                             <a
+                                                                target='_blank'
                                                                 href={
                                                                     el.link
                                                                 }
