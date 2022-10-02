@@ -19,18 +19,8 @@ export default function CreateStory(props) {
     const [title, setTitle] = useState();
     const [description, setDescription] =
         useState();
+
     const [buttons, setButtons] = useState([]);
-
-    const [focus, setFocus] = useState();
-
-    useEffect(() => {
-        if (focus) {
-            const el = document.querySelector(
-                `#${focus.id}`
-            );
-            el.focus();
-        }
-    }, [focus]);
 
     useEffect(() => {
         if (typeof $ == "function") {
@@ -39,6 +29,18 @@ export default function CreateStory(props) {
             setIsOffline(true);
         }
     }, []);
+
+    useEffect(() => {
+        if (title || description) {
+            document.querySelector(
+                `#title`
+            ).value = title;
+            document.querySelector(
+                `#summernote`
+            ).value = description;
+        }
+    }, [title, description]);
+
     if (!loggedIn) {
         return <PageNotFound />;
     }
@@ -53,22 +55,10 @@ export default function CreateStory(props) {
                     autoComplete='off'
                     type='text'
                     id='title'
-                    value={title}
-                    onChange={(e) => {
-                        setFocus(e.target);
-                        setTitle(e.target.value);
-                    }}
                 />
                 <textarea
                     className='summernote'
-                    value={description}
                     id='summernote'
-                    onChange={(e) => {
-                        setFocus(e.target);
-                        setDescription(
-                            e.target.value
-                        );
-                    }}
                 ></textarea>
                 <div>
                     <header>Add Links</header>
@@ -97,6 +87,16 @@ export default function CreateStory(props) {
                                     document.querySelector(
                                         "input#link"
                                     );
+                                setDescription(
+                                    document.querySelector(
+                                        `#summernote`
+                                    ).value
+                                );
+                                setTitle(
+                                    document.querySelector(
+                                        `#title`
+                                    ).value
+                                );
                                 setButtons([
                                     ...buttons,
                                     {
@@ -119,7 +119,11 @@ export default function CreateStory(props) {
                         alert(`
                             ${buttons[0]}
                             ${title}
-                            ${description}
+                            ${
+                                document.querySelector(
+                                    `#summernote`
+                                ).value
+                            }
                         `);
                     }}
                 >
