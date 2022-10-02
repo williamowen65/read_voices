@@ -9,6 +9,7 @@ import { Upload } from "upload-js";
 import {
     setIsEditing,
     setLoggedIn,
+    setVerboseLog,
 } from "../../../context/appReducer";
 import gsap from "gsap";
 import {
@@ -82,6 +83,13 @@ export default function Dashboard() {
     const handleStatusClick = (e, el) => {
         e.stopPropagation();
         dispatch(toggleStatus(el.meta.slug));
+        dispatch(
+            setVerboseLog({
+                title:
+                    "toggled status of " +
+                    el.title,
+            })
+        );
     };
 
     const handleImgClick = (e, slug) => {

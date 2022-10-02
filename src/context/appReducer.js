@@ -5,6 +5,11 @@ const appSlice = createSlice({
     initialState: {
         loggedIn: true,
         isEditing: false,
+        verboseLog: {
+            title: null,
+            description: null,
+            type: null,
+        },
     },
     reducers: {
         setLoggedIn: (state, action) => {
@@ -19,11 +24,16 @@ const appSlice = createSlice({
                     !state.isEditing;
             }
         },
+        setVerboseLog: (state, action) => {
+            state.verboseLog = action.payload;
+        },
     },
 });
 
 export const setLoggedIn =
     appSlice.actions.setLoggedIn;
+export const setVerboseLog =
+    appSlice.actions.setVerboseLog;
 export const setIsEditing =
     appSlice.actions.setIsEditing;
 export default appSlice.reducer;

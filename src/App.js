@@ -31,6 +31,7 @@ import Donate from "./pages/Donate";
 // import Story from "./pages/story/Story";
 import PageNotFound from "./pages/404";
 import { useEffect } from "react";
+import VerboseLogger from "./components/UX/verboseLogger/VerboseLogger";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -101,6 +102,7 @@ export default function App() {
                 </Container>
 
                 <AppRoutes />
+                <VerboseLogger />
                 <Container
                     maxWidth={900}
                     className='footerContainer'
