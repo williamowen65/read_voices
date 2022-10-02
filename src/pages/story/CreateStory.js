@@ -6,6 +6,7 @@ import {
     useDispatch,
     useSelector,
 } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { slugify } from "../../components/UI/dashboard/util/slugify";
 import Button from "../../components/UI/form/Button";
@@ -20,6 +21,7 @@ export default function CreateStory(props) {
     const { loggedIn } = useSelector(
         (state) => state.app
     );
+    const navigate = useNavigate();
     const [isOffline, setIsOffline] =
         useState(false);
     const [title, setTitle] = useState();
@@ -50,6 +52,24 @@ export default function CreateStory(props) {
     if (!loggedIn) {
         return <PageNotFound />;
     }
+
+    const setTitleAndDescription = () => {
+        const description =
+            document.querySelector(
+                `#summernote`
+            ).value;
+        const title =
+            document.querySelector(
+                `#title`
+            ).value;
+        setDescription(description);
+        setTitle(title);
+        return {
+            description,
+            title,
+        };
+    };
+
     return (
         <div className='storyStyle'>
             <Container
@@ -81,6 +101,7 @@ export default function CreateStory(props) {
                                 name='link'
                                 id='link'
                                 placeholder='link'
+                                autoComplete='off'
                             />
                         </div>
                         <div
@@ -93,23 +114,21 @@ export default function CreateStory(props) {
                                     document.querySelector(
                                         "input#link"
                                     ).value;
-                                setDescription(
-                                    document.querySelector(
-                                        `#summernote`
-                                    ).value
-                                );
-                                setTitle(
-                                    document.querySelector(
-                                        `#title`
-                                    ).value
-                                );
-                                setButtons([
-                                    ...buttons,
-                                    {
-                                        text,
-                                        link,
-                                    },
-                                ]);
+                                if (
+                                    link &&
+                                    text
+                                ) {
+                                    /* Add a check that the link works, just ping it */
+
+                                    setTitleAndDescription();
+                                    setButtons([
+                                        ...buttons,
+                                        {
+                                            text,
+                                            link,
+                                        },
+                                    ]);
+                                }
                             }}
                         >
                             <div className='add'>
@@ -132,42 +151,75 @@ export default function CreateStory(props) {
 
                 <Button
                     onClick={() => {
-                        dispatch(
-                            setNewStoryAndStatus({
-                                title,
-                                description,
-                                meta: {
-                                    datePublished:
-                                        new Date().toUTCString(),
-                                    status: "public",
-                                    buttons,
-                                    slug: slugify(
-                                        title
-                                    ),
-                                },
-                            })
-                        );
+                        const {
+                            title,
+                            description,
+                        } =
+                            setTitleAndDescription();
+                        if (
+                            title &&
+                            description &&
+                            buttons.length
+                        ) {
+                            dispatch(
+                                setNewStoryAndStatus(
+                                    {
+                                        title,
+                                        description,
+                                        meta: {
+                                            datePublished:
+                                                new Date().toDateString(),
+                                            status: "public",
+                                            buttons,
+                                            slug: slugify(
+                                                title
+                                            ),
+                                        },
+                                    }
+                                )
+                            );
+                            navigate("/");
+                        } else {
+                            alert(
+                                "must have title, description, and at least one button"
+                            );
+                        }
                     }}
                 >
                     Publish
                 </Button>
                 <Button
                     onClick={() => {
-                        dispatch(
-                            setNewStoryAndStatus({
-                                title,
-                                description,
-                                meta: {
-                                    datePublished:
-                                        null,
-                                    status: "draft",
-                                    buttons,
-                                    slug: slugify(
-                                        title
-                                    ),
-                                },
-                            })
-                        );
+                        const {
+                            title,
+                            description,
+                        } =
+                            setTitleAndDescription();
+
+                        if (title) {
+                            dispatch(
+                                setNewStoryAndStatus(
+                                    {
+                                        title,
+                                        description,
+                                        meta: {
+                                            datePublished:
+                                                null,
+                                            status: "draft",
+                                            buttons,
+                                            slug: slugify(
+                                                title
+                                            ),
+                                        },
+                                    }
+                                )
+                            );
+                            navigate("/");
+                        } else {
+                            alert(
+                                "must have title to save as draft"
+                            );
+                        }
                     }}
                 >
                     Save as Draft

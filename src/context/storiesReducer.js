@@ -95,7 +95,10 @@ const storiesSlice = createSlice({
             state.activeSlug = action.payload;
         },
         setNewStoryAndStatus: (state, action) => {
-            state.stories.push(action.payload);
+            state.stories = [
+                action.payload,
+                ...state.stories,
+            ];
         },
     },
 });

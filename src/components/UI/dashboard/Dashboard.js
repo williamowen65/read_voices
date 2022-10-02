@@ -22,6 +22,7 @@ import { toggleStatus } from "../../../context/storiesReducer";
 import { TbPlus } from "react-icons/tb";
 import { BsFileImage } from "react-icons/bs";
 import { IoIosLogOut } from "react-icons/io";
+import { BsFilter } from "react-icons/bs";
 import FileUploadButton from "../../UX/FileUploadButton";
 
 const width = 300;
@@ -105,8 +106,13 @@ export default function Dashboard() {
                 >
                     <header>
                         <h3>Dashboard</h3>
+                        <BsFilter
+                            size={30}
+                            className='filter'
+                        />
                         <TbPlus
                             size={30}
+                            className='add'
                             onClick={() => {
                                 navigate(
                                     "/create"
