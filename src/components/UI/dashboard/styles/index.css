@@ -27,6 +27,7 @@
   margin: 10px 4px 10px 2px;
   transition: all 0.5s;
   position: relative;
+  overflow-x: hidden;
 }
 #dashboard ul li svg {
   opacity: 0;
@@ -41,7 +42,6 @@
   transform: translateY(-5px);
 }
 #dashboard ul li .statusContainer {
-  position: absolute;
   right: 3px;
   top: 3px;
   display: flex;
@@ -54,6 +54,13 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
+}
+#dashboard ul li .title {
+  flex-grow: 1;
+  overflow-x: scroll;
+}
+#dashboard ul li .title::-webkit-scrollbar {
+  display: none;
 }
 #dashboard .filter {
   scale: 0.8;

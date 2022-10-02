@@ -1,6 +1,7 @@
 #verboseLogger {
   border: 2px solid black;
   border-radius: 4px;
+  background-color: white;
   box-shadow: inset 0px 0px 40px #c6b4b4;
   width: 300px;
   position: fixed;

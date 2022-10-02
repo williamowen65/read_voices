@@ -27,6 +27,7 @@
             margin: 10px 4px 10px 2px;
             transition: all 0.5s;
             position: relative;
+            overflow-x: hidden;
             svg {
                 opacity: 0;
                 transition: all 0.5s;
@@ -43,7 +44,7 @@
                 transform: translateY(-5px);
             }
             .statusContainer {
-                position: absolute;
+                // position: absolute;
                 right: 3px;
                 top: 3px;
                 display: flex;
@@ -55,6 +56,13 @@
                     width: 20px;
                     height: 20px;
                     border-radius: 50%;
+                }
+            }
+            .title {
+                flex-grow: 1;
+                overflow-x: scroll;
+                &::-webkit-scrollbar {
+                    display: none;
                 }
             }
         }

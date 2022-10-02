@@ -83,13 +83,18 @@ export default function Dashboard() {
     const handleStatusClick = (e, el) => {
         e.stopPropagation();
         dispatch(toggleStatus(el.meta.slug));
-        dispatch(
-            setVerboseLog({
-                title:
-                    "toggled status of " +
-                    el.title,
-            })
-        );
+        if (
+            ["private", "public"].includes(
+                el.meta.status
+            )
+        )
+            dispatch(
+                setVerboseLog({
+                    title:
+                        "toggled status of " +
+                        el.title,
+                })
+            );
     };
 
     const handleImgClick = (e, slug) => {
@@ -153,7 +158,7 @@ export default function Dashboard() {
                                         : null
                                 }
                             >
-                                <h4>
+                                <h4 className='title'>
                                     {el.title}
                                 </h4>
                                 <BsFileImage
