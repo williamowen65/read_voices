@@ -30,6 +30,8 @@ export default function CreateStory(props) {
         useState();
 
     const [buttons, setButtons] = useState([]);
+    const [submitted, setSubmitted] =
+        useState(false);
 
     useEffect(() => {
         if (typeof $ == "function") {
@@ -37,6 +39,17 @@ export default function CreateStory(props) {
         } else {
             setIsOffline(true);
         }
+        return () => {
+            if (
+                title ||
+                description ||
+                buttons.length
+            ) {
+                if (!submitted) {
+                    alert("hey!!! Wait");
+                }
+            }
+        };
     }, []);
 
     useEffect(() => {

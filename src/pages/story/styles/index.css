@@ -50,6 +50,7 @@
   display: flex;
   border-top: 2px solid black;
   min-width: 100%;
+  flex-direction: column;
   padding-top: 10px;
 }
 .storyStyle.display .content .item header {
