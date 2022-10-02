@@ -5,11 +5,7 @@ const appSlice = createSlice({
     initialState: {
         loggedIn: true,
         isEditing: false,
-        verboseLog: {
-            title: null,
-            description: null,
-            type: null,
-        },
+        verboseLog: [],
     },
     reducers: {
         setLoggedIn: (state, action) => {
@@ -25,7 +21,18 @@ const appSlice = createSlice({
             }
         },
         setVerboseLog: (state, action) => {
-            state.verboseLog = action.payload;
+            console.log(
+                "payload ",
+                action.payload,
+                Array.isArray(action.payload)
+            );
+            if (Array.isArray(action.payload)) {
+                state.verboseLog = action.payload;
+            } else {
+                state.verboseLog.push(
+                    action.payload
+                );
+            }
         },
     },
 });

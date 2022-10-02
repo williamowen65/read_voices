@@ -83,8 +83,8 @@ const AppRoutes = () => (
 );
 
 export default function App() {
-    const loggedIn = useSelector(
-        (state) => state.app.loggedIn
+    const { loggedIn, verboseLog } = useSelector(
+        (state) => state.app
     );
 
     const dispatch = useDispatch();
@@ -102,7 +102,12 @@ export default function App() {
                 </Container>
 
                 <AppRoutes />
-                <VerboseLogger />
+                {verboseLog.map((el, i) => (
+                    <VerboseLogger
+                        log={el}
+                        key={i}
+                    />
+                ))}
                 <Container
                     maxWidth={900}
                     className='footerContainer'
