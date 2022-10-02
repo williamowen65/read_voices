@@ -94,12 +94,17 @@ const storiesSlice = createSlice({
         setActiveSlug: (state, action) => {
             state.activeSlug = action.payload;
         },
+        setNewStoryAndStatus: (state, action) => {
+            state.stories.push(action.payload);
+        },
     },
 });
 // alert("hi");
 
 export const setStories =
     storiesSlice.actions.setStories;
+export const setNewStoryAndStatus =
+    storiesSlice.actions.setNewStoryAndStatus;
 export const setSlugs =
     storiesSlice.actions.setSlugs;
 export const toggleStatus =

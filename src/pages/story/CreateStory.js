@@ -2,15 +2,21 @@ import React, {
     useEffect,
     useState,
 } from "react";
-import { useSelector } from "react-redux";
+import {
+    useDispatch,
+    useSelector,
+} from "react-redux";
 import styled from "styled-components";
+import { slugify } from "../../components/UI/dashboard/util/slugify";
 import Button from "../../components/UI/form/Button";
 import Input from "../../components/UI/form/Input";
+import { setNewStoryAndStatus } from "../../context/storiesReducer";
 import Container from "../../layout/Container";
 import PageNotFound from "../404";
 import "./styles/index.css";
 
 export default function CreateStory(props) {
+    const dispatch = useDispatch();
     const { loggedIn } = useSelector(
         (state) => state.app
     );
@@ -82,11 +88,11 @@ export default function CreateStory(props) {
                                 const text =
                                     document.querySelector(
                                         "input#text"
-                                    );
+                                    ).value;
                                 const link =
                                     document.querySelector(
                                         "input#link"
-                                    );
+                                    ).value;
                                 setDescription(
                                     document.querySelector(
                                         `#summernote`
@@ -110,26 +116,62 @@ export default function CreateStory(props) {
                                 +
                             </div>
                         </div>
-                        <div className='newButtons'></div>
+                        <div className='newButtons'>
+                            {buttons.map(
+                                (e, i) => (
+                                    <Button
+                                        key={i}
+                                    >
+                                        {e.text}
+                                    </Button>
+                                )
+                            )}
+                        </div>
                     </div>
                 </div>
 
                 <Button
                     onClick={() => {
-                        alert(`
-                            ${buttons[0]}
-                            ${title}
-                            ${
-                                document.querySelector(
-                                    `#summernote`
-                                ).value
-                            }
-                        `);
+                        dispatch(
+                            setNewStoryAndStatus({
+                                title,
+                                description,
+                                meta: {
+                                    datePublished:
+                                        new Date().toUTCString(),
+                                    status: "public",
+                                    buttons,
+                                    slug: slugify(
+                                        title
+                                    ),
+                                },
+                            })
+                        );
                     }}
                 >
                     Publish
                 </Button>
-                <Button>Save as Draft</Button>
+                <Button
+                    onClick={() => {
+                        dispatch(
+                            setNewStoryAndStatus({
+                                title,
+                                description,
+                                meta: {
+                                    datePublished:
+                                        null,
+                                    status: "draft",
+                                    buttons,
+                                    slug: slugify(
+                                        title
+                                    ),
+                                },
+                            })
+                        );
+                    }}
+                >
+                    Save as Draft
+                </Button>
             </Container>
         </div>
     );
