@@ -18,17 +18,28 @@
             background-color: blue;
             translate: 10px 10px;
             box-shadow: -5px -5px purple;
-            padding-left: 10px;
+            padding: 10px;
             margin-right: 30px;
+            margin-bottom: 10px;
             padding-bottom: 10px;
             float: left;
-            .imageContainer {
-                min-width: 180px;
-                height: 100%;
-                position: absolute;
-                z-index: -1;
-                translate: -10px 5px;
+            // position: absolute;
+            h2,
+            p {
+                display: inline;
             }
+            p {
+                white-space: no-wrap;
+            }
+            .imageContainer {
+                // position: absolute;
+                float: left;
+                // min-width: 180px;
+                height: 100%;
+                z-index: -1;
+                padding-right: 10px;
+            }
+
             // align-items: center;
             // justify-content: space-between;
         }

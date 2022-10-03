@@ -1,6 +1,12 @@
 .storyStyle.create {
   margin: 20px 0;
 }
+.storyStyle.create input[type=date] {
+  float: right;
+}
+.storyStyle.create .note-editor {
+  margin: 20px 0;
+}
 .storyStyle.create textarea {
   display: block;
   margin: 20px 0;
@@ -62,17 +68,24 @@
   background-color: blue;
   translate: 10px 10px;
   box-shadow: -5px -5px purple;
-  padding-left: 10px;
+  padding: 10px;
   margin-right: 30px;
+  margin-bottom: 10px;
   padding-bottom: 10px;
   float: left;
 }
+.storyStyle.display .content .item header h2,
+.storyStyle.display .content .item header p {
+  display: inline;
+}
+.storyStyle.display .content .item header p {
+  white-space: no-wrap;
+}
 .storyStyle.display .content .item header .imageContainer {
-  min-width: 180px;
+  float: left;
   height: 100%;
-  position: absolute;
   z-index: -1;
-  translate: -10px 5px;
+  padding-right: 10px;
 }
 .storyStyle.display .content .buttons {
   width: 100%;

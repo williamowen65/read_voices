@@ -1,6 +1,9 @@
 @import "../../../styles/mixins/_CardStyle.scss";
 
 #home {
+    a {
+        color: purple;
+    }
     ul {
         &:last-child {
             border-bottom: 2px solid black;

@@ -153,24 +153,27 @@ export default function Story() {
                         <div className='item'>
                             <p>
                                 <header>
-                                    <h2 className='title'>
-                                        {
-                                            story.title
-                                        }
-                                    </h2>
-                                    <p>
-                                        {
-                                            story
-                                                .meta
-                                                .datePublished
-                                        }
-                                    </p>
-                                    <div className='imageContainer'>
-                                        <img
-                                            src='https://flxt.tmsimg.com/assets/p19989_p_v10_aa.jpg'
-                                            alt=''
-                                            width='100px'
-                                        />
+                                    <div>
+                                        <div className='imageContainer'>
+                                            <img
+                                                src='https://flxt.tmsimg.com/assets/p19989_p_v10_aa.jpg'
+                                                alt=''
+                                                width='100px'
+                                            />
+                                        </div>
+                                        <h2 className='title'>
+                                            {
+                                                story.title
+                                            }
+                                        </h2>{" "}
+                                        <br />
+                                        <p>
+                                            {
+                                                story
+                                                    .meta
+                                                    .datePublished
+                                            }
+                                        </p>
                                     </div>
                                 </header>
                                 <p>

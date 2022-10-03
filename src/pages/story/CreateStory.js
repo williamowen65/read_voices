@@ -85,6 +85,12 @@ export default function CreateStory(props) {
                     type='text'
                     id='title'
                 />
+                <Input
+                    placeholder='Publish date'
+                    autoComplete='off'
+                    type='date'
+                    id='date'
+                />
                 <textarea
                     className='summernote'
                     id='summernote'
@@ -171,7 +177,11 @@ export default function CreateStory(props) {
                                         description,
                                         meta: {
                                             datePublished:
-                                                new Date().toDateString(),
+                                                new Date()
+                                                    .toDateString()
+                                                    .slice(
+                                                        4
+                                                    ),
                                             status: "public",
                                             buttons,
                                             slug: slugify(

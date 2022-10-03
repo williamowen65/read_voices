@@ -3,7 +3,12 @@
 .storyStyle {
     &.create {
         margin: 20px 0;
-        // background-color: blue;
+        input[type="date"] {
+            float: right;
+        }
+        .note-editor {
+            margin: 20px 0;
+        }
         textarea {
             display: block;
             margin: 20px 0;

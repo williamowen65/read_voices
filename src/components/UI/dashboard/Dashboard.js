@@ -32,9 +32,8 @@ const width = 300;
 export default function Dashboard() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { stories, activeSlug } = useSelector(
-        (state) => state.stories
-    );
+    const { stories, activeSlug, dataInSync } =
+        useSelector((state) => state.stories);
     const { isEditing, loggedIn } = useSelector(
         (state) => state.app
     );
@@ -47,37 +46,9 @@ export default function Dashboard() {
         (el) => el.meta.slug === activeSlug
     )[0];
 
-    const handleClick = () => {
-        dispatch();
-        dispatch(setIsEditing());
-        if (animate) {
-            const el =
-                document.querySelector(
-                    "#dashboard"
-                );
-            const btn =
-                document.querySelector("#edit");
-
-            const tl = gsap.timeline({
-                defaults: { duration: 1 },
-            });
-
-            tl.to(
-                "#dashboard",
-                {
-                    width: isEditing ? 300 : 0,
-                    ease: "none",
-                },
-                "="
-            ).to(
-                btn,
-                {
-                    left: isEditing ? width : 0,
-                    ease: "none",
-                },
-                "="
-            );
-        }
+    const handleEditClick = () => {
+        // alert("edit");
+        dispatch(setIsEditing(!isEditing));
     };
 
     // const story =
@@ -124,15 +95,17 @@ export default function Dashboard() {
                     local edited content. Click
                     here to deploy changes.
                 </div> */}
-                <VerboseLogger
-                    log={{
-                        description:
-                            "You are viewing local edited content. Click here to deploy changes.",
-                    }}
-                    classN='deployContainer'
-                >
-                    <FiAlertTriangle />
-                </VerboseLogger>
+                {!dataInSync && (
+                    <VerboseLogger
+                        log={{
+                            description:
+                                "You are viewing local edited content. Click here to deploy changes.",
+                        }}
+                        classN='deployContainer'
+                    >
+                        <FiAlertTriangle />
+                    </VerboseLogger>
+                )}
                 <div
                     id='dashboard'
                     className='dashboardContainer'
@@ -242,7 +215,9 @@ export default function Dashboard() {
                     <>
                         <Button
                             className='dashboard'
-                            onClick={handleClick}
+                            onClick={
+                                handleEditClick
+                            }
                             id='edit'
                         >
                             {isEditing
