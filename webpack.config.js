@@ -3,7 +3,7 @@ const glob = require("glob");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = (arg) => {
     return {
-        mode: "development",
+        mode: "production",
         entry: path.resolve("./src/index.js"),
         output: {
             // path: path.resolve(__dirname, "dist"),
